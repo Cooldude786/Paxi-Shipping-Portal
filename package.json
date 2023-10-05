@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-dev": "ng run paxi-shipper-portal:build:development --aot --output-hashing=all",
+    "deploy-dev": "npm run build-dev && firebase use dev && firebase deploy --only hosting:dev",
+    "build-qa": "ng run paxi-shipper-portal:build:qa --aot --output-hashing=all",
+    "deploy-qa": "npm run build-qa && firebase use qa && firebase deploy --only hosting:qa"
   },
   "private": true,
   "dependencies": {
