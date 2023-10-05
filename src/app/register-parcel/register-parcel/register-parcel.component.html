@@ -1,0 +1,156 @@
+<main>
+  <section class="desktopsection">
+    <app-header class="header-height desktopHeaders">
+      <app-user-sidebar icon></app-user-sidebar>
+      <img src="assets/img/logo/logo.svg" alt="Logo" logo />
+      <div class="user-id" userdetail>
+        <p class="paxi-caption1">Personal Account ID</p>
+        <p class="paxi-body">{{shipperId}}</p>
+      </div>
+    </app-header>
+    <app-sub-header class="header-height desktopHeaders">
+      <a routerLink="/dashboard" backicon><img src="assets/img/icon-left.svg" alt="Back"></a>
+      <ng-container subheading>Register New Parcel</ng-container>
+    </app-sub-header>
+    <app-header class="header-height mobileHeaders">
+      <a routerLink="/dashboard" icon><img src="assets/img/icon-left.svg" alt="Back"></a>
+      <ng-container heading>Register New Parcel</ng-container>
+    </app-header>
+    <div class="content flex-grow">
+      <div class="content_div">
+        <p class="paxi-subheading">Who are you sending this to?</p>
+        <p class="paxi-body">We need a few details about who is receiving the parcel</p>
+      </div>
+      <mat-card class="paxi-register_parcel paxi-sm_shadow">
+        <div class="user_details">
+          <div class="user_icon">
+            <span><img src="assets/img/icon-user.svg" alt="user"></span>
+          </div>
+          <div class="user-id">
+            <p class="paxi-body4 text-primary">Personal Account ID</p>
+            <p class="paxi-body4">{{shipperId}}</p>
+          </div>
+        </div>
+      </mat-card>
+      <div class="button mt-2">
+        <!-- <button class="paxi-btn-middle standard_parcel active" type="button" (click)="toggleBtn(1)">Standard Parcel</button> -->
+        <!-- <button class="paxi-btn-middle" type="button" (click)="toggleBtn(2)" [ngClass]="{'active': parcelType === 2}">Token Parcel</button> -->
+      </div>
+      <form [formGroup]="recepientForm" id="recepientForm" class="mt-1" (ngSubmit)="onSubmit()">
+        <input  hidden="true"  matInput class="form-control" formControlName="orderId">
+        <div class="mobileViewForm">
+          <div class="paxi-input-group">
+            <label class="paxi-label py-1" for="recipient_name">*Recipient Name and Surname</label>
+            <mat-form-field>
+              <input #nameInput matInput formControlName="recipient_name" id="recipient_name" placeholder="e.g John Smith" autocomplete="off" maxlength="74">
+              <mat-error *ngIf="validationError('recipient_name', 'required')">Please provide your Recipient Name and Surname.</mat-error>
+              <mat-error *ngIf="validationError('recipient_name', 'maxlength')">Please enter a Recipient Name and Surname between 1 and 74 characters.</mat-error>
+              <mat-error *ngIf="validationError('recipient_name', 'pattern')">Please enter a valid Recipient Name and Surname, like John Smith.</mat-error>
+              <mat-error *ngIf="validationError('recipient_name', 'notIncludeSpace')">Please enter a valid Recipient Name and Surname, like John Smith.</mat-error>
+            </mat-form-field>
+            <span class="paxi-body4 mb-2">(Characters Remaining: {{nameInput.value.length}} /74)</span>
+          </div>
+          <div class="paxi-input-group">
+            <label class="paxi-label py-1" for="phone_number">*Recipient Mobile Number</label>
+            <mat-form-field>
+              <div class="input-box">
+                <span class="prefix">+27</span>
+                <input matInput formControlName="phone_number" id="phone_number" placeholder="e.g. 0715250910" autocomplete="off">
+              </div>
+              <mat-error *ngIf="validationError('phone_number', 'required')">Please provide your Recipient mobile number.</mat-error>
+              <mat-error *ngIf="validationError('phone_number', 'minlength')">Please enter a Recipient mobile number between 9 and 10 digits.</mat-error>
+              <mat-error *ngIf="validationError('phone_number', 'maxlength')">Please enter a Recipient mobile number between 9 and 10 digits.</mat-error>
+              <mat-error *ngIf="validationError('phone_number', 'pattern')">Please enter a valid Recipient mobile, like 0715250910.</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="paxi-input-group">
+            <label class="paxi-label py-1" for="description">Parcel Description</label>
+            <mat-form-field>
+              <input #myInput matInput formControlName="description" id="description" placeholder="Grandma's Sweater" autocomplete="off" maxlength="50">
+              <mat-error *ngIf="validationError('description', 'maxlength')">Please enter a Parcel description between 1 and 50 characters.</mat-error>
+            </mat-form-field>
+            <span class="paxi-body4 mb-2">(Characters Remaining: {{myInput.value.length}} /50)</span>
+          </div>
+          <div class="paxi-input-group">
+            <label class="paxi-label py-1" for="destination">*Destination</label>
+            <div class="input-box">
+              <mat-form-field class="destination">
+                <input matInput id="destination" formControlName="destination" placeholder="(P4433) PEPCELL MDANTSANE CITY" [matAutocomplete]="location">
+                <mat-autocomplete #location="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      ({{ option.nodeCode }}) {{option.nodeShortName}}
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngFor="let validation of validation_msgs.contactAutocompleteControl">
+                  <div *ngIf="recepientForm.controls['destination'].hasError(validation.type)">
+                    {{validation.message}}
+                  </div>
+                </mat-error>
+              </mat-form-field>
+              <a (click)="openDialog()"><img src="assets/img/map-icon.svg" alt="" width="20"></a>
+            </div>
+          </div>
+        </div>
+        <div class="desktopViewForm">
+          <div class="paxi-input-group">
+            <div class="width45 mr-2">
+              <label class="paxi-label py-1" for="recipient_name">*Recipient Name and Surname <span class="paxi-body4 ml-1">(Characters Remaining: {{recipientName.value.length}} /74)</span></label>
+              <mat-form-field>
+                <input #recipientName matInput formControlName="recipient_name" id="recipient_name" placeholder="e.g John Smith" autocomplete="off" maxlength="74">
+                <mat-error *ngIf="validationError('recipient_name', 'required')">Please provide your Recipient Name and Surname.</mat-error>
+                <mat-error *ngIf="validationError('recipient_name', 'maxlength')">Please enter a Recipient Name and Surname between 1 and 74 characters.</mat-error>
+                <mat-error *ngIf="validationError('recipient_name', 'pattern')">Please enter a valid Recipient Name and Surname, like John Smith.</mat-error>
+                <mat-error *ngIf="validationError('recipient_name', 'notIncludeSpace')">Please enter a valid Recipient Name and Surname, like John Smith.</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="width45 ml-1">
+              <label class="paxi-label py-1" for="description">Parcel Description <span class="paxi-body4 ml-1">(Characters Remaining: {{myInputdesk.value.length}} /50)</span></label>
+              <mat-form-field>
+                <input #myInputdesk matInput formControlName="description" id="description" placeholder="Grandma's Sweater" autocomplete="off" maxlength="50">
+                <mat-error *ngIf="validationError('description', 'maxlength')">Please enter a Parcel description between 1 and 50 characters.</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="paxi-input-group">
+            <div class="width45 mr-2">
+              <label class="paxi-label py-1" for="phone_number">*Recipient Mobile Number</label>
+              <mat-form-field>
+                <div class="input-box">
+                  <span class="prefix">+27</span>
+                  <input matInput formControlName="phone_number" id="phone_number" placeholder="e.g. 0715250910" autocomplete="off">
+                </div>
+                <mat-error *ngIf="validationError('phone_number', 'required')">Please provide your Recipient mobile number.</mat-error>
+                <mat-error *ngIf="validationError('phone_number', 'minlength')">Please enter a Recipient mobile number between 9 and 10 digits.</mat-error>
+                <mat-error *ngIf="validationError('phone_number', 'maxlength')">Please enter a Recipient mobile number between 9 and 10 digits.</mat-error>
+                <mat-error *ngIf="validationError('phone_number', 'pattern')">Please enter a valid Recipient mobile, like 0715250910.</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="width45 ml-1">
+              <label class="paxi-label py-1" for="destination">*Destination</label>
+              <div class="input-box">
+                <mat-form-field class="destination">
+                  <input matInput id="destination" formControlName="destination" placeholder="(P4433) PEPCELL MDANTSANE CITY" [matAutocomplete]="location">
+                  <mat-autocomplete #location="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        ({{ option.nodeCode }}) {{option.nodeShortName}}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <mat-error *ngFor="let validation of validation_msgs.contactAutocompleteControl">
+                    <div *ngIf="recepientForm.controls['destination'].hasError(validation.type)">
+                      {{validation.message}}
+                    </div>
+                  </mat-error>
+                </mat-form-field>
+                <a (click)="openDialog()"><img src="assets/img/map-icon.svg" alt="" width="20"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <footer class="mt-1 mb-2">
+        <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill nextButton" type="submit" [disabled]="!recepientForm.valid" form="recepientForm">Next</button>
+      </footer>
+    </div>
+    <app-footer></app-footer>
+  </section>
+</main>

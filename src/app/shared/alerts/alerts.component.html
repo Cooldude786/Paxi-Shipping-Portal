@@ -1,0 +1,53 @@
+<div class="alert-preview ">
+
+
+  <div class="alert alert-danger alert-dismissable fade-in" [class.fade-out]="hideDanger">
+    <button type="button" data-dismiss="alert" aria-label="close" class="close" (click)="hideDanger = true">
+      <span aria-hidden="true">×</span>
+    </button>
+      <strong>oops!</strong>&nbsp;<ng-content></ng-content>
+  </div>
+
+
+
+
+  <!-- <ng-content select="[primary]"></ng-content>
+  <ng-content select="[secondary]"></ng-content>
+  <ng-content select="[success]"></ng-content>
+  <ng-content select="[info]"></ng-content>
+  <ng-content select="[warning]"></ng-content> -->
+
+<!--
+  <div class="alert alert-primary alert-dismissable fade-in" [class.fade-out]="hidePrimary">
+    <button type="button" data-dismiss="alert" aria-label="close" class="close" (click)="hidePrimary = true">
+      <span aria-hidden="true">×</span>
+    </button>
+    <strong>Well done!</strong> You successfully read this important alert message.
+  </div>
+  <div class="alert alert-secondary alert-dismissable fade-in" [class.fade-out]="hideSecondary">
+    <button type="button" data-dismiss="alert" aria-label="close" class="close" (click)="hideSecondary = true">
+      <span aria-hidden="true">×</span>
+    </button>
+    <strong>Well done!</strong> You successfully read this important alert message.
+  </div>
+  <div class="alert alert-success alert-dismissable fade-in" [class.fade-out]="hideSuccess">
+    <button type="button" data-dismiss="alert" aria-label="close" class="close" (click)="hideSuccess = true">
+      <span aria-hidden="true">×</span>
+    </button>
+    <strong>Well done!</strong> You successfully read this important alert message.
+  </div>
+  <div class="alert alert-info alert-dismissable fade-in" [class.fade-out]="hideInfo">
+    <button type="button" data-dismiss="alert" aria-label="close" class="close" (click)="hideInfo = true">
+      <span aria-hidden="true">×</span>
+    </button>
+    <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+  </div>
+  <div class="alert alert-warning alert-dismissable fade-in" [class.fade-out]="hideWarning">
+    <button type="button" data-dismiss="alert" aria-label="close" class="close" (click)="hideWarning = true">
+      <span aria-hidden="true">×</span>
+    </button>
+    <strong>Warning!</strong> Best check yo self, you're not looking too good.
+  </div>
+  -->
+
+</div>

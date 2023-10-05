@@ -1,0 +1,118 @@
+@import "../../../../variables.scss";
+.desktop{
+    display: none;
+}
+mat-sidenav.mat-drawer.mat-sidenav.sidenav.ng-tns-c28-0.ng-trigger.ng-trigger-transform.mat-drawer-over.ng-star-inserted.mat-drawer-opened{
+	position: absolute;
+    top: 0px;
+    right: 0;
+    width: 100%;
+}
+.mat-drawer-container{
+    position: unset;
+}
+.mat-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    box-sizing: border-box;
+    transform: translate3d(-100%, 0, 0);
+}
+.sidenav{
+    padding: 24px !important;
+    box-shadow: 0px 2.5444819927215576px 7.633446216583252px 0px #62626233;
+    .menu_header{
+        padding: 8px 0;
+        .close{
+            font-size: 24px;
+            float: right;
+        }
+        .paxi-heading4{
+            color: $paxi-primary-orange !important;
+        }
+    }
+    .paxi-subheading{
+      color: $paxi-text-primary !important;
+      font-weight: 400;
+    }
+    .user_detail{
+        p,h3{
+            margin:0 0 5px;
+        }
+        .name{
+            font-weight: 400;
+        }
+    }
+    a {
+        display: block;
+        padding: 6px 0;
+        width: 100%;
+        text-align: left;
+    }
+    .mdc-list-item{
+        padding: 0;
+    }
+    .mat-expansion-panel{
+        // border-bottom: 1px solid #EAEAEA;
+        .mat-expansion-panel-header{
+            padding: 0 16px 0 0;
+            font-weight: 400;
+        }
+        mat-nav-list{
+          float: left !important;
+            a{
+                text-align: center;
+            }
+        }
+    }
+    .paxi-paragraph{
+        color: #475569 !important;
+    }
+    mat-nav-list{
+        a{
+            // border-bottom: 1px solid #EAEAEA;
+            padding: 12px 0;
+        }
+    }
+}
+.imageIcon{
+  height: 25px;
+  vertical-align: bottom;
+  margin-right: 10px;
+}
+.paxipoint{
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+    .mobile{
+        display: none;
+    }
+    .desktop{
+        display: inline-block;
+    }
+    mat-toolbar{
+        background-color: white;
+        a{
+            margin-right: 2rem;
+            gap: 10px;
+        }
+    }
+    mat-nav-list{
+        a{
+            display: block !important;
+            margin: 6px 0;
+            padding: 6px 0;
+            cursor: pointer;
+        }
+    }
+}
+mat-toolbar-row.mat-toolbar-row.ng-tns-c8-3 {
+    height: auto;
+}
+.mat-mdc-list-base {
+    padding: 0;
+}

@@ -1,0 +1,61 @@
+@import "../../../../variables.scss";
+
+.desktop-content {
+  display: none;
+}
+
+@media only screen and (min-width: 1200px) {
+  main {
+    background: $paxi-bg-grey;
+
+    .desktop-icon {
+      position: absolute;
+      top: 8%;
+      left: 5%;
+    }
+
+    section {
+      background: $color-white;
+      min-height: 40vh;
+      width: unset;
+      min-width: 50vh;
+      border-radius: 16px;
+      box-shadow: $card-shadow;
+
+      app-header {
+        display: none;
+      }
+
+      .content {
+        align-self: center;
+        width: 35vw;
+        padding: 3.5rem;
+      }
+
+      .paxi-btn-grp {
+        margin-bottom: 0 !important;
+        padding-bottom: 3.5rem;
+        align-self: center;
+
+        button:nth-child(1) {
+          margin-right: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .desktop-content {
+    display: block;
+  }
+  .mobile{
+    display: none;
+  }
+  .desktop{
+    display: block;
+  }
+  .desktop-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}

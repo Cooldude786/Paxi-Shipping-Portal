@@ -1,0 +1,61 @@
+{
+  "hosting": [
+    {
+      "target": "dev",
+      "public": "./dist/paxi-shipper-portal",
+      "ignore": [
+        ".firebase",
+        "**/node_modules/**",
+        ".firebaserc",
+        ".gitignore",
+        "firebase.json",
+        "package-lock.json",
+        "package-json"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "qa",
+      "public": "./dist/paxi-shipper-portal",
+      "ignore": [
+        ".firebase",
+        "**/node_modules/**",
+        ".firebaserc",
+        ".gitignore",
+        "firebase.json",
+        "package-lock.json",
+        "package-json"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "prod",
+      "public": "./dist/paxi-shipper-portal",
+      "ignore": [
+        ".firebase",
+        "**/node_modules/**",
+        ".firebaserc",
+        ".gitignore",
+        "firebase.json",
+        "package-lock.json",
+        "package-json"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

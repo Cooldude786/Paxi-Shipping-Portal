@@ -1,0 +1,85 @@
+@import "../../../variables.scss";
+.desktopHeaders{
+  display: none;
+}
+.content{
+  gap: 24px;
+  .first_section{
+    padding: 24px 16px;
+    gap: 16px;
+    background-color: white;
+    .paxi-caption1{
+      color: $paxi-text-secondary;
+    }
+  }
+  .tabpanel {
+    margin-bottom: 2rem;
+    .tab-content{
+      gap: 32px;
+      padding: 24px 16px;
+      .detailDiv{
+        gap: 8px;
+        padding: 5px 16px;
+        span{
+          padding: 4px 0;
+        }
+      }
+    }
+  }
+  .footersection{
+    gap: 23px;
+    text-align: center;
+    img{
+      margin: 0 5px;
+    }
+  }
+}
+.mat-mdc-tab-labels .mdc-tab__text-label{
+  font-family: Rubik;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  color: $paxi-text-secondary;
+}
+.mat-mdc-tab-labels .mdc-tab--active .mdc-tab__text-label{
+  color: $paxi-primary-orange !important;
+}
+.mat-mdc-tab-labels .mdc-tab--active .mdc-tab-indicator .mdc-tab-indicator__content--underline{
+  border-color:var(--mdc-tab-indicator-active-indicator-color, $paxi-primary-orange) !important;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  .desktopHeaders{
+    display: block;
+  }
+  .mobileHeaders{
+    display: none;
+  }
+  .content{
+    padding: 20px 40px 0;
+  }
+  .detailDiv{
+    width: 47%;
+  }
+  .detailsTab{
+    background: $color-white;
+    display: inline-block;
+    // padding: 20px;
+    padding: 15px;
+  }
+  // iframe{
+  //   width: 90%;
+  //   float: right;
+  // }
+  .left{
+    float: left !important;
+  }
+  .right{
+    float: right !important;
+  }
+
+  .tab-content {
+    background-color: $color-white;
+  }
+}

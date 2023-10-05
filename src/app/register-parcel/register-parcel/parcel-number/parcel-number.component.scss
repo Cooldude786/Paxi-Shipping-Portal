@@ -1,0 +1,125 @@
+@import "../../../../variables.scss";
+.desktopHeaders{
+  display: none;
+}
+.content{
+  padding: 15px 16px;
+  .content_div{
+    .paxi-subheading{
+      color: $paxi-text-primary;
+    }
+  }
+  .insuranceCard{
+    padding: 15px 5px;
+  }
+  .icon_content {
+    display: flex;
+    .icon {
+      // margin-top: 2px;
+      // align-self: center;
+      .material-symbols-outlined {
+        color: $color-teal;
+        font-size: 4rem;
+      }
+    }
+
+    .content {
+      // align-self: center;
+      padding: 4px;
+      p {
+        color: $color-teal;
+        &:first-child {
+          margin-bottom: 5px;
+          font-size: 12px;
+        }
+        &:last-child {
+          font-size: 10px;
+          margin: 0px;
+        }
+      }
+    }
+  }
+  form{
+    height: 500px !important;
+  }
+  .parcel_number{
+    width: 279px !important;
+  }
+  .input-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    a{
+      border: 1px solid #fff;
+      background: #fff;
+      margin-bottom: 20px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0px 1px 3px 0px #6262621A;
+      border-radius: 8px;
+      img{
+        vertical-align: middle;
+      }
+    }
+  }
+  footer{
+    .saveforlater{
+      margin-right: 10px;
+      background-color: rgba(255, 222, 203, 0.3019607843);
+      border: 1px solid #CB5100;
+      color: #CB5100;
+    }
+    button{
+      width: 166px;
+      margin-inline: 0;
+    }
+  }
+}
+
+
+/* In order to place the tracking correctly */
+// ::ng-deep canvas.drawing, canvas.drawingBuffer {
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+// }
+
+#scanner-container {
+  position: relative;
+  &::ng-deep video {
+    width: 100%;
+    height: 24vh;
+    object-fit: cover;
+  }
+  ::ng-deep canvas {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  .desktopHeaders{
+    display: block;
+  }
+  .mobileHeaders{
+    display: none;
+  }
+  .content{
+    padding: 20px 40px 0;
+  }
+  .content{
+    form{
+      height: auto !important;
+    }
+  }
+  .scannerButton{
+    display: none;
+  }
+  .width45,footer{
+    width: 54%;
+    .parcel_number{
+      width: 100% !important;
+    }
+    button{
+      width: 49% !important;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<main>
+  <section class="desktopsection">
+    <header>
+      <img src="assets/img/logo/logo.svg" alt="Logo">
+    </header>
+    <aside>
+      <ngx-slick-carousel class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slideConfig">
+        <figure ngxSlickItem *ngFor="let slide of slides" class="slide">
+          <figcaption>
+            <h5>{{ slide.title }}</h5>
+            <p>{{ slide.content }}</p>
+          </figcaption>
+          <div class="sliderbg">
+            <img src="{{ slide.image }}" alt="Slider">
+          </div>
+        </figure>
+      </ngx-slick-carousel>
+
+      <div class="paxi-btn-grp">
+        <button class="paxi-btn-large paxi-btn-primary-outline rm-3" (click)="redirect('signup')">Sign Up</button>
+        <button class="paxi-btn-large paxi-btn-primary" (click)="redirect('login')">Login</button>
+      </div>
+    </aside>
+  </section>
+</main>

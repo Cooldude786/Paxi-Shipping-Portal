@@ -1,0 +1,53 @@
+@import "../../../variables.scss";
+
+:host {
+  margin-block: 10px;
+  display: grid;
+  gap: 18px;
+  justify-content: center;
+  grid-template-columns: repeat(6, auto);
+}
+
+
+input {
+  width: 30px;
+  height: 56px;
+  border-radius: 8px;
+
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.0025em;
+  color: $paxi-text-secondary;
+
+  text-align: center;
+  background: $color-white;
+  border: 1px solid transparent;
+  box-shadow: $sm-shadow;
+
+  &::placeholder {
+    color: $paxi-secondary-hover-state;
+  }
+
+  &:focus {
+    outline: 2px solid $paxi-primary-orange;
+    border-color: transparent;
+  }
+}
+
+:host.invalid-input {
+  input {
+    outline: 2px solid $color-error !important;
+    border-color: transparent;
+    &:focus {
+      outline: 2px solid $color-error !important;
+      border-color: transparent;
+    }
+  }
+}
+
+// input:disabled {
+//   border-color: #eee;
+// }

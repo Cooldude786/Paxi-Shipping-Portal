@@ -1,0 +1,24 @@
+{
+  "projects": {
+    "default": "grp-serv-digi-dev-paxi",
+    "dev": "grp-serv-digi-dev-paxi",
+    "qa": "grp-serv-digi-test-paxi",
+    "prod": "grp-serv-digi-prod-paxi"
+  },
+  "targets": {
+    "grp-serv-digi-dev-paxi": {
+      "hosting": {
+        "dev": [
+          "paxi-shipper-portal-dev"
+        ]
+      }
+    },
+    "grp-serv-digi-test-paxi": {
+      "hosting": {
+        "qa": [
+          "paxi-shipper-portal-qa"
+        ]
+      }
+    }
+  }
+}

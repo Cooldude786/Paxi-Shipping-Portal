@@ -1,0 +1,57 @@
+<main>
+  <section class="desktopsection">
+    <app-header class="header-height">
+      <app-user-sidebar icon></app-user-sidebar>
+      <ng-container heading>Contact Us</ng-container>
+    </app-header>
+    <div class="content pyx-2 flex-grow dashboard">
+      <p class="paxi-heading4">Need assistance?</p>
+      <mat-card class="card_section pa-2">
+        <div class="image_section">
+          <p class="paxi-heading4"><img src="assets/img/whatsapp.svg" alt="WhatsApp" /></p>
+        </div>
+        <div class="content_section mt-1">
+          <p class="paxi-subheading heading">We love chatting with you</p>
+          <p class="paxi-bodyb4 subheading">Our consultants are available on Whatsapp</p>
+          <p class="paxi-body detail mt-1">060 070 2492</p>
+        </div>
+        <div class="action_button mt-2 mb-2">
+          <button class="paxi-btn-large paxi-btn-primary" (click) = "redirectToWhatsapp()" type="button">Open Whatsapp</button>
+        </div>
+      </mat-card>
+      <!-- <mat-card class="card_section pa-2">
+        <div class="image_section">
+          <p class="paxi-heading4"><img src="assets/img/call.svg" alt="Phone" /></p>
+        </div>
+        <div class="content_section mt-1">
+          <p class="paxi-subheading heading">Give us a call</p>
+          <p class="paxi-bodyb4 subheading">Call our consultants during operating hours</p>
+          <p class="paxi-body detail mt-1">012 345 7899</p>
+        </div>
+        <div class="action_button mt-2 mb-2">
+          <button class="paxi-btn-large paxi-btn-primary" type="button" onClick='window.parent.location.href = "tel:+270123457899"'>Phone mobile</button>
+        </div>
+      </mat-card> -->
+      <!-- <mat-card class="card_section location pa-2">
+        <div class="image_section">
+          <p class="paxi-heading4"><img src="assets/img/location.svg" alt="Location" /></p>
+        </div>
+        <div class="content_section mt-1">
+          <p class="paxi-subheading heading">Find a PAXI point</p>
+          <p class="paxi-bodyb4 subheading mt-2">Need to locate the PAXI Point nearest to you? <span class="spanhead">Try our convenient, interactive map</span></p>
+        </div>
+        <div class="action_button mt-2 mb-1">
+          <button class="paxi-btn-large paxi-btn-primary" type="button" (click)="openPoint()">Find nearest point</button>
+        </div>
+      </mat-card> -->
+      <!-- <div class="formdiv mt-25">
+        <div class="form-header">
+          <p class="paxi-heading4 mb-1">How Can We Help You?</p>
+          <p class="paxi-body detail mt-1">Complete the form below and we’ll get back to you as soon as we can.</p>
+        </div>
+      </div> -->
+      <!-- <iframe width="100%" height="1230" [src]="contactFormURL" frameborder="0"></iframe> -->
+    </div>
+    <app-footer></app-footer>
+  </section>
+</main>

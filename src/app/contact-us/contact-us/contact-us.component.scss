@@ -1,0 +1,38 @@
+@import "../../../variables.scss";
+.content{
+  display: grid;
+  gap: 24px;
+  align-content: baseline;
+  .card_section{
+    box-shadow: 0px 1px 3px 0px #0000001A;
+    background: #FFFFFF;
+    border-radius: 8px;
+    p{
+      margin-bottom: 0px !important;
+    }
+    .content_section{
+      text-align: center;
+      .heading{
+        color: $paxi-text-primary;
+      }
+      .subheading{
+        margin-top: 5px;
+        color: $paxi-text-secondary;
+        text-align: center;
+      }
+      .detail{
+        color: $paxi-primary-orange;
+      }
+    }
+    .action_button{
+      text-align: center;
+    }
+  }
+  .location .spanhead{
+    font-weight: 500 !important;
+  }
+  .formdiv{
+    text-align: center;
+    padding: 0 15px;
+  }
+}

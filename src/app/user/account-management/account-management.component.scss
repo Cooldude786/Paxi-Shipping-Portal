@@ -1,0 +1,24 @@
+@import "../../../variables.scss";
+
+.paxi-caption1{
+  color: $paxi-text-secondary;
+}
+
+.paxi-btn-fill {
+  margin-inline: 0;
+}
+@media only screen and (min-width: 1200px) {
+  main {
+    background: $paxi-bg-grey;
+    section {
+      background: $paxi-bg-grey;
+      .content {
+        margin-top: 20px;
+        align-self: center;
+        box-shadow: $card-shadow;
+        text-align: center;
+        width: 30%;
+      }
+    }
+  }
+}

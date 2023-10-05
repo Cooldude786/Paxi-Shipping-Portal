@@ -1,0 +1,113 @@
+@import "../../../variables.scss";
+
+main {
+  // min-height: 100vh;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  section {
+    // display: flex;
+    // flex-flow: column;
+
+    // position: relative;
+    // height: 812px;
+    // width: 375px;
+    // background: $paxi-bg-grey;
+
+    header {
+      // align-self: center;
+      text-align: center;
+      padding: 8px;
+      height: 10%;
+
+      img {
+        padding: 1.5rem;
+        scale: 1.3;
+      }
+    }
+
+    aside {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .slick-slider {
+        figure {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+
+          figcaption {
+            padding: 16px;
+            border-radius: 8px;
+            gap: 24px;
+            background: $color-white;
+            box-shadow: $sm-shadow;
+
+            h5 {
+              font-family: 'Rubik';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 20px;
+              line-height: 24px;
+              letter-spacing: -0.02em;
+              /* Paxi Primary/Navy Blue */
+              color: $paxi-primary-navy-blue;
+            }
+
+            p {
+              font-family: 'Rubik';
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 24px;
+              /* or 150% */
+              letter-spacing: 0.0025em;
+              /* Paxi Text/Secondary */
+              color: $paxi-text-secondary;
+              margin-bottom: 0px;
+            }
+          }
+
+          .sliderbg {
+            background: $slider-bg;
+            align-self: center;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+
+      // *-NOTE-* :- the css code to change the slider button css is written in styles.scss.
+
+      .paxi-btn-grp {
+
+        button {
+          width: 150px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1200px) {
+  ngx-slick-carousel{
+    width: 60%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .rm-3{
+    margin-right: 30px;
+  }
+  .paxi-btn-grp{
+    justify-content: center;
+  }
+}

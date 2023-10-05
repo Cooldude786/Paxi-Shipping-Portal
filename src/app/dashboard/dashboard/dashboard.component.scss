@@ -1,0 +1,385 @@
+@import "../../../variables.scss";
+.leftside{
+  float: left;
+}
+.rightside{
+  float: right;
+}
+main {
+  section {
+    .content {
+      .paxi-register_parcel {
+        border-radius: 8px;
+        gap: 16px;
+        .content_div {
+          padding: 16px;
+          gap: 16px;
+          // .heading_div {
+          //   width: 311px;
+          //   height: 48px;
+          // }
+          // .subheading_div {
+          //   width: 311px;
+          //   height: 72px;
+          // }
+          .button {
+            border-radius: 8px;
+            button {
+              width: 311px;
+            }
+          }
+        }
+      }
+      .search-input {
+        position: relative;
+
+        input {
+          border: none;
+          background: #fff;
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+          height: 56px;
+          border-radius: 12px;
+          padding: 10px 40px;
+        }
+
+        img {
+          position: absolute;
+          top: 15px;
+        }
+
+        .searchimg {
+          left: 10px;
+        }
+
+        .filterimg {
+          right: 15px;
+        }
+      }
+      .statusFilter {
+        overflow: auto;
+        white-space: nowrap;
+        button{
+          display: inline-block;
+          padding: 14px;
+          border: none;
+          border-radius: 40px;
+          cursor: pointer;
+        }
+        // .cat {
+        //   display: inline-block;
+        //   padding: 14px;
+        //   border: none;
+        //   border-radius: 40px;
+        //   cursor: pointer;
+        //   label{
+        //     float: left;
+        //     line-height: 3.0em;
+        //     width: auto;
+        //     background-color: $color-white;
+        //     color: $paxi-primary-navy-blue;
+        //     border-radius: 40px;
+        //     padding: 10px;
+        //     span{
+        //       text-align: center;
+        //       padding: 3px 0;
+        //       display: block;
+        //     }
+        //     input{
+        //       position: absolute;
+        //       display: none;
+        //       background-color: $color-white;
+        //       color: $paxi-primary-navy-blue;
+        //     }
+        //   }
+        //   input:checked + span{
+        //     color: $color-white;
+        //     background-color: $paxi-primary-navy-blue;
+        //   }
+        //   // :hover {
+        //   //   background-color: #f47521 !important;
+        //   // }
+
+        //   // :focus {
+        //   //   background-color: aqua;
+        //   // }
+        // }
+        .statusBtn{
+          background-color: $color-white;
+          color: $paxi-primary-navy-blue;
+        }
+        button.statusBtn:focus{
+          color: $color-white;
+          background-color: $paxi-primary-navy-blue;
+        }
+        // .notactive {
+        //   background-color: $color-white;
+        //   color: $paxi-primary-navy-blue;
+        // }
+        // .active {
+        //   color: $color-white;
+        //   background-color: $paxi-primary-navy-blue;
+        // }
+      }
+      .parcelListing {
+        box-shadow: none;
+        .parecl {
+          border-radius: 8px;
+          box-shadow: $drop-sm-shadow;
+          background: $color-white;
+          padding: 16px;
+          .statusDiv {
+            border-radius: 16px;
+            padding: 12px;
+            width: auto;
+            display: inline-block;
+          }
+          .statusDiv p {
+            margin: 0;
+          }
+          .registerOnline {
+            background: $paxi-turquoise;
+            p {
+              color: $color-white !important;
+              margin-top: 5px !important;
+            }
+          }
+          .enRoute {
+            background: $paxi-turquoise;
+            p {
+              color: $color-white !important;
+              margin-top: 5px !important;
+            }
+          }
+          .reportTodepot {
+            background: $paxi-turquoise;
+            p {
+              color: $color-white !important;
+              margin-top: 5px !important;
+            }
+          }
+          .description{
+            word-break: break-word;
+          }
+          .firstStatus{
+            display: flex;
+            justify-content: space-between;
+          }
+          .parceDetail {
+            hr {
+              border-color: $paxi-tertiary-greys;
+              border-radius: 8px;
+              background: $paxi-tertiary-greys;
+            }
+            .recipient_name{
+              max-width: 60%;
+              word-wrap: break-word;
+            }
+            .parcelHeader {
+              display: flex;
+              .tracking_Detail {
+                flex: 50%;
+              }
+            }
+          }
+        }
+      }
+      .errordiv {
+        .error_content {
+          text-align: center;
+          padding: 0 60px;
+        }
+        .btn {
+          width: 100% !important;
+          border: 1px solid #f47521;
+          background: $color-white;
+        }
+      }
+    }
+  }
+}
+::-webkit-scrollbar {
+  height: 0px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+mat-sidenav.mat-drawer.mat-sidenav.sidenav.ng-tns-c28-0.ng-trigger.ng-trigger-transform.mat-drawer-over.ng-star-inserted.mat-drawer-opened {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  width: 100%;
+}
+.mat-drawer-container {
+  position: unset;
+}
+.mat-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  box-sizing: border-box;
+  transform: translate3d(-100%, 0, 0);
+}
+.sidenav {
+  padding: 24px !important;
+  a {
+    display: block;
+    padding: 6px 0;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.cat.action input[type="checkbox"],.cat.action input[type="radio"] {
+  visibility: hidden;
+  position: absolute;
+}
+.cat.action {
+  display: inline-block;
+}
+.cat.action span {
+  display: inline-block;
+  padding: 14px;
+  border-radius: 40px;
+  margin-right: 10px;
+  background-color: $color-white;
+  color: $paxi-primary-navy-blue;
+}
+
+.cat input:checked + span {
+  color: $color-white;
+  background-color: $paxi-primary-navy-blue;
+}
+.no_record_div{
+  margin: 0 auto;
+  width: 70%;
+}
+.no_more_record{
+  padding: 0.5rem !important;
+  margin-bottom: 0px;
+  background-color: #e2e3e5;
+  color: #6c757d !important;
+  text-align: center;
+  font-weight: 500;
+}
+.desktop{
+  display: none;
+}
+.status{
+  margin-top: 20px;
+}
+.status mat-select {
+  width: 100%;
+  box-sizing: border-box;
+  height: 55px;
+  border-radius: 12px;
+  padding: 15px 20px;
+  border: none;
+  background-color: $color-white;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  .content_div{
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: center;
+  }
+  .status {
+    width: 275px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top:0;
+  }
+  .search {
+    width: calc(95% - 230px);
+    display: inline-block;
+    position: relative;
+  }
+  .status mat-select {
+    width: 100%;
+    box-sizing: border-box;
+    height: 55px;
+    border-radius: 12px;
+    padding: 15px 20px;
+    border: none;
+    background-color: $color-white;
+  }
+  .statusFilter{
+    display: none;
+  }
+  .desktop{
+    display: block;
+  }
+  .mobile{
+    display: none;
+  }
+  .no_record_div{
+    display: none;
+  }
+  .statusDiv {
+    border-radius: 16px;
+    padding: 12px;
+    width: auto;
+    display: inline-block;
+  }
+  .registerOnline {
+    background: $paxi-turquoise;
+    span {
+      color: $color-white !important;
+      margin-top: 5px !important;
+    }
+  }
+  .reportTodepot {
+    background: $paxi-turquoise;
+    span{
+      color: $color-white !important;
+      margin-top: 5px !important;
+    }
+  }
+  #parcelTable {
+    width: 100%;
+    border-collapse:separate;
+    border-spacing:0 15px;
+  }
+
+  #parcelTable td {
+    padding: 10px;
+  }
+
+  #parcelTable th{
+    padding: 20px;
+    width: 100px;
+  }
+
+  #parcelTable .statusDiv:hover {cursor: pointer;}
+
+  #parcelTable th {
+    text-align: left;
+    font-family: Rubik;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: $paxi-text-primary;
+    background: $color-white;
+  }
+  #parcelTable tr{
+    background: $color-white;
+    box-shadow: 0px 1px 2px 0px #0000001A;
+    border-radius: 10px;
+    padding: 10px;
+    border-spacing: 20px 0;
+  }
+}

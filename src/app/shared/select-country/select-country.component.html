@@ -1,0 +1,49 @@
+<div class="select-box">
+  <div (click)="toogleList()">
+    <label class="paxi-label py-1" for="lastName">*Country</label>
+      <input [readOnly]="true" placeholder="Select Country" value="{{ preferredCountryName }}" [ngClass]="fetchCountryCode && fetchCountryCode.length > 0 && !showCountries ? 'disabled' : ''">
+  </div>
+  <ng-container *ngIf="showList">
+    <div class="options">
+      <input class="search-box" type="text" [(ngModel)]="searchValue" (input)="handleSearch($event)" (keydown.enter)="handleSearch($event)" placeholder="Search Country Name">
+      <ol>
+        <ng-container *ngFor="let item of countryList">
+          <li class="option"
+            [class.active]="item.code === preferredCountryCode"
+            *ngIf="item.code == 'ZA'"
+            (click)="setCountry(item.code, item.name)">
+            <div>
+              <span class="flag" [innerHTML]="item.svgFlag"></span>
+              <span class="country-name">{{ item.name }}</span>
+            </div>
+            <!-- <strong>{{ item.dialCode }}</strong> -->
+          </li>
+        </ng-container>
+        <ng-container *ngFor="let item of countryList">
+          <li class="option"
+            [class.active]="item.code === preferredCountryCode"
+            *ngIf="item.code == 'BW' || item.code == 'SZ' || item.code == 'LS' || item.code == 'MZ' || item.code == 'NA' || item.code == 'ZW'"
+            (click)="setCountry(item.code, item.name)">
+            <div>
+              <span class="flag" [innerHTML]="item.svgFlag"></span>
+              <span class="country-name">{{ item.name }}</span>
+            </div>
+            <!-- <strong>{{ item.dialCode }}</strong> -->
+          </li>
+        </ng-container>
+        <ng-container *ngFor="let item of countryList">
+          <li class="option"
+            [class.active]="item.code === preferredCountryCode"
+            *ngIf="item.code != 'ZA' && item.code != 'BW' && item.code != 'SZ' && item.code != 'LS' && item.code != 'MZ' && item.code != 'NA' && item.code != 'ZW'"
+            (click)="setCountry(item.code, item.name)">
+            <div>
+              <span class="flag" [innerHTML]="item.svgFlag"></span>
+              <span class="country-name">{{ item.name }}</span>
+            </div>
+            <!-- <strong>{{ item.dialCode }}</strong> -->
+          </li>
+        </ng-container>
+      </ol>
+    </div>
+  </ng-container>
+</div>

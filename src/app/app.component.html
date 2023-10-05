@@ -1,0 +1,9 @@
+<div style="position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px">
+  <!-- The alert container -->
+  <div class="alert" [class.show-alert]="showWarningPopup" id="myAlert">
+    <span>Your session is about to expire in {{ countdown }}s.</span>
+  </div>
+  <!-- loader component -->
+  <app-loading-spinner *ngIf="showLoading | async"></app-loading-spinner>
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

@@ -1,0 +1,21 @@
+@import '../variables.scss';
+
+/* Styles for the alert container */
+.alert {
+  padding: 15px;
+  // background-color: #f44336; /* Red background color */
+  background-color: $color-error; /* Red background color */
+  color: $color-white; /* White text color */
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 1;
+}
+
+/* Show the alert container when the .show-alert class is added */
+.show-alert {
+  display: block;
+}

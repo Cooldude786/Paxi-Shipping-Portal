@@ -1,0 +1,100 @@
+@import "../../../variables.scss";
+.desktopHeaders{
+  display: none;
+}
+.content{
+  padding: 15px 16px;
+  .content_div{
+    .paxi-subheading{
+      color: $paxi-text-primary;
+    }
+  }
+  .paxi-register_parcel{
+    padding: 8px 16px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    p{
+      margin: 0 0 5px !important;
+    }
+    .user_details{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      .text-primary{
+        color: $paxi-text-primary;
+      }
+    }
+  }
+  .button{
+    .standard_parcel{
+      margin-right: 15px;
+    }
+    .active{
+      background-color: #FFDECB4D;
+      border: 1px solid $paxi-primary-orange-focused;
+      color: $paxi-primary-orange-focused;
+    }
+  }
+  .input-box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    a{
+      border: 1px solid #fff;
+      background: #fff;
+      margin-bottom: 20px;
+      padding: 10px 15px;
+      text-align: center;
+      box-shadow: 0px 1px 3px 0px #6262621A;
+      border-radius: 8px;
+      img{
+        vertical-align: middle;
+      }
+    }
+  }
+  .destination{
+    width: 279px;
+  }
+  footer{
+    .paxi-btn-fill{
+      margin-inline:0px !important;
+    }
+  }
+}
+.desktopViewForm{
+  display: none;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  .desktopHeaders{
+    display: block;
+  }
+  .mobileHeaders{
+    display: none;
+  }
+  .content{
+    padding: 20px 40px 0;
+  }
+  .paxi-register_parcel{
+    display: none;
+  }
+  .desktopViewForm{
+    display: block;
+  }
+  .mobileViewForm{
+    display: none;
+  }
+  .paxi-input-group{
+    flex-direction: row;
+    .width45{
+      width: 50%;
+      // margin-right: 20px;
+      mat-form-field{
+        width: 100%;
+      }
+    }
+  }
+  .nextButton{
+    width: 20%;
+    float: right;
+  }
+}

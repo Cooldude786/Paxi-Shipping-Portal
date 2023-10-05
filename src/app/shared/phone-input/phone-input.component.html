@@ -1,0 +1,27 @@
+<div class="select-box">
+  <!-- <label [for]="inputId">{{ label }}</label> -->
+  <div class="selected-option">
+    <div (click)="toogleList()">
+      <span class="flag" [innerHTML]="preferredCountrysvgFlag">
+      </span>
+      <strong>{{ preferredCountryDialCode }}</strong>
+    </div>
+    <input matInput (input)="emitMobile($event)" placeholder="Phone Number" [value]='fetchMobileValue'>
+  </div>
+  <ng-container *ngIf="showList">
+    <div class="options">
+      <input class="search-box" type="text" [(ngModel)]="searchValue" (input)="handleSearch($event)" (keydown.enter)="handleSearch($event)" placeholder="Search Country Name">
+      <ol>
+        <ng-container *ngFor="let item of countryList">
+          <li [class.active]="item.code === preferredCountryCode" class="option" (click)="setCountry(item.code)">
+            <div>
+              <span class="flag" [innerHTML]="item.svgFlag"></span>
+              <span class="country-name">{{ item.name }}</span>
+            </div>
+            <strong>{{ item.dialCode }}</strong>
+          </li>
+        </ng-container>
+      </ol>
+    </div>
+  </ng-container>
+</div>

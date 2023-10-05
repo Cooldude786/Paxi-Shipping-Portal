@@ -1,0 +1,99 @@
+<main>
+  <section class="desktopsection">
+    <app-header class="header-height desktopHeaders">
+      <app-user-sidebar icon></app-user-sidebar>
+      <img src="assets/img/logo/logo.svg" alt="Logo" logo />
+      <div class="user-id" userdetail>
+        <p class="paxi-caption1">Personal Account ID</p>
+        <p class="paxi-body">{{shipperId}}</p>
+      </div>
+    </app-header>
+    <app-sub-header class="header-height desktopHeaders">
+      <a routerLink="/dashboard" backicon><img src="assets/img/icon-left.svg" alt="Back"></a>
+      <ng-container subheading>Parcel History</ng-container>
+    </app-sub-header>
+    <app-header class="header-height mobileHeaders">
+      <a routerLink="/dashboard" icon><img src="assets/img/icon-left.svg" alt="Back"></a>
+      <ng-container heading>Parcel History</ng-container>
+    </app-header>
+    <div class="content flex-grow">
+      <!-- <div class="first_section">
+      </div> -->
+      <div class="tabpanel">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span class="tab-heading">Details</span>
+            </ng-template>
+            <ng-template matTabContent>
+              <div class="tab-content">
+                <div class="detailsTab">
+                  <div class="detailDiv left">
+                    <span class="paxi-caption1">Parcel Tracking Number</span>
+                    <span class="paxi-label">{{this.parcelDetail[0].customerRefCode}}</span>
+                  </div>
+                  <div class="detailDiv right">
+                    <span class="paxi-caption1">Status</span>
+                    <span class="paxi-label">{{this.parcelDetail[0].parcelStatus.parcelStatusCustomerDesc | titlecase}}</span>
+                  </div>
+                  <div class="detailDiv left">
+                    <span class="paxi-caption1">Last Activity</span>
+                    <span class="paxi-label">{{this.parcelDetail[0].parcelEvents.length > 0 ? (this.parcelDetail[0].parcelEvents[this.parcelDetail[0].parcelEvents.length - 1].eventDatetime | date: 'dd MMM YYYY, HH:mm') : '-' }}</span>
+                  </div>
+                  <div class="detailDiv right">
+                    <span class="paxi-caption1">Delivery Date</span>
+                    <span class="paxi-label"
+                    [style.color]="
+                    (this.parcelDetail[0].estimatedCustomerDeliveryDate != null && this.parcelDetail[0].estimatedCustomerDeliveryDate) >= today ? '#26C7BA' : 'inherit'
+                    ">
+                      {{this.parcelDetail[0].estimatedCustomerDeliveryDate != null ? (this.parcelDetail[0].estimatedCustomerDeliveryDate | date:'dd MMM YYYY') : '-' }}
+                    </span>
+                  </div>
+                  <div class="detailDiv left">
+                    <span class="paxi-caption1">Last Message</span>
+                    <span class="paxi-label">{{this.parcelDetail[0].parcelEvents.length > 0 ? (this.parcelDetail[0].parcelEvents[this.parcelDetail[0].parcelEvents.length - 1].eventMessage | titlecase) : '-' }}</span>
+                  </div>
+                  <div class="detailDiv right">
+                    <span class="paxi-caption1">Send Date</span>
+                    <span class="paxi-label">{{this.parcelDetail[0].createdDate != null ? (this.parcelDetail[0].createdDate | date: 'dd MMM YYYY, HH:mm') : '-' }}</span>
+                  </div>
+                  <div class="detailDiv left">
+                    <span class="paxi-caption1">Sender</span>
+                    <span class="paxi-label">{{this.parcelDetail[0].sendCustomerName != null ? (this.parcelDetail[0].sendCustomerName | titlecase ) : '-'}}</span>
+                  </div>
+                  <div class="detailDiv right">
+                    <span class="paxi-caption1">Receiver</span>
+                    <span class="paxi-label">{{this.parcelDetail[0].rcvCustomerName != null ? (this.parcelDetail[0].rcvCustomerName | titlecase) : '-'}}</span>
+                  </div>
+                  <div class="detailDiv left">
+                    <span class="paxi-caption1">Collector</span>
+                    <span class="paxi-label">{{this.parcelDetail[0].collectCustomerName != null ? (this.parcelDetail[0].collectCustomerName | titlecase) : '-'}}</span>
+                  </div>
+                </div>
+                <!-- <div class="detailDiv left mt-1">
+                  <span class="paxi-heading5">Have a Question?</span><p><a class="paxi-caption1" routerLink="/contact-us">Click Here</a></p>
+                </div> -->
+              </div>
+            </ng-template>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <span class="tab-heading">Tracking</span>
+            </ng-template>
+            <ng-template matTabContent>
+              <div class="tab-content">
+                <iframe [src]="trackingDetailURL" height="500" width="100%" frameborder="0"></iframe>
+              </div>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <!-- <div class="footersection">
+        <a class="paxi-bodyb4 icontext"><img src="assets/img/message.svg" alt=""></a>
+        <a class="paxi-bodyb4 icontext"  onClick='window.parent.location.href = "tel:+270860007294"'><img src="assets/img/call_.svg" alt=""> </a>
+        <a class="paxi-bodyb4 icontext" href="mailto:support@paxi.co.za?Subject=Query&body=links:%0Dhttp://link1.com %0D http://link1.com " target="_top"><img src="assets/img/email_.svg" alt=""></a>
+      </div> -->
+    </div>
+    <app-footer></app-footer>
+  </section>
+</main>

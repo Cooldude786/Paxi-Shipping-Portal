@@ -1,0 +1,75 @@
+mat-card {
+  box-shadow: none;
+
+  .menudiv {
+    display: flex;
+    padding: 16px;
+
+    .menusection {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      .information {
+        gap: 12px;
+        padding: 0 10px;
+        margin: 0;
+
+        .icontext {
+          margin-bottom: 15px;
+          display: flex;
+          gap: 10px;
+
+          img {
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    .applyflex {
+      flex: 60%;
+    }
+  }
+
+  .copyright {
+    padding: 16px;
+
+    .textdiv {
+      gap: 8px;
+      text-align: center;
+      margin: 0 auto;
+
+      span {
+        font-family: Inter;
+        font-size: 12px;
+        // font-weight: 400;
+        font-weight: bold;
+        line-height: 15px;
+        letter-spacing: 0.004em;
+        text-align: left;
+        color: white;
+      }
+
+      .textcenter {
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  .copyright {
+
+    .textdiv {
+
+      span {
+        font-size: 16px !important;
+        line-height: 16px !important;
+        letter-spacing: 0.04em !important;
+      }
+    }
+  }
+}

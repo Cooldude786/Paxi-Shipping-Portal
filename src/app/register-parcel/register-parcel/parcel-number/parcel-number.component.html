@@ -1,0 +1,68 @@
+<main>
+  <section class="desktopsection">
+    <app-header class="header-height desktopHeaders">
+      <app-user-sidebar icon></app-user-sidebar>
+      <img src="assets/img/logo/logo.svg" alt="Logo" logo />
+      <div class="user-id" userdetail>
+        <p class="paxi-caption1">Personal Account ID</p>
+        <p class="paxi-body">{{shipperId}}</p>
+      </div>
+    </app-header>
+    <app-sub-header class="header-height desktopHeaders">
+      <a routerLink="/register-parcel" [queryParams]="{populate: 'true'}" backicon><img src="assets/img/icon-left.svg" alt="Back"></a>
+      <ng-container subheading>Register New Parcel</ng-container>
+    </app-sub-header>
+    <app-header class="header-height mobileHeaders">
+      <a routerLink="/register-parcel" [queryParams]="{populate: 'true'}" icon><img src="assets/img/icon-left.svg" alt="Back"></a>
+      <ng-container heading>Register New Parcel</ng-container>
+    </app-header>
+    <div class="content flex-grow">
+      <div class="content_div">
+        <p class="paxi-subheading">Enter Your Parcel Number</p>
+        <p class="paxi-body">Take a look on the PAXI Bag - there will be a Parcel Number attached to it. Type it in here!</p>
+      </div>
+      <form [formGroup]="parcelNumberForm" id="parcelNumberForm" class="mt-1" (ngSubmit)="onSubmit()">
+        <div class="paxi-input-group">
+          <div class="width45">
+            <label class="paxi-label py-1" for="parcel_number">*Parcel Number</label>
+            <div class="input-box">
+              <mat-form-field class="parcel_number">
+                <input matInput formControlName="parcel_number" id="parcel_number"
+                  placeholder="e.g. D081316356062">
+                <mat-error *ngIf="validationError('parcel_number', 'required')">Please provide your Parcel number.</mat-error>
+                <mat-error *ngIf="parcelNumberForm.controls['parcel_number'].errors?.['invalidParcelNo']">{{ asyncParcelErrMsg ? asyncParcelErrMsg : 'sdsd' }}</mat-error>
+              </mat-form-field>
+              <span (click)="toogleScanner()" class="scannerButton"><img src="assets/img/scan-barcode.svg" alt=""></span>
+            </div>
+          </div>
+        </div>
+        <!-- Container for scanner start-->
+        <!-- <div id="scanner-container" class="mt-2"> -->
+        <div id="scanner-container">
+          <!-- Quagga scanner will be instantiated here -->
+        </div>
+        <!-- Container for scanner end-->
+        <mat-card class="paxi-sm_shadow insuranceCard width45">
+          <div class="icon_content">
+            <div class="icon">
+              <span class="material-symbols-outlined">
+                lightbulb_circle
+              </span>
+            </div>
+            <div class="content">
+              <p class="paxi-subheading">Sending Something Valuable?</p>
+              <p class="paxi-body">PAXI parcels are insured up to maximum of R500 by default. If you want to insure your parcel for more, purchase an additional insurance voucher at any PEP, PEPhome or PEPcell store for as little as R10.</p>
+            </div>
+          </div>
+        </mat-card>
+      </form>
+      <footer class="mt-4">
+        <button class="paxi-btn-large paxi-btn-fill saveforlater" type="button" (click)="saveLater()">Save For Later
+        </button>
+        <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill" type="submit" [disabled]="!parcelNumberForm.valid"
+          form="parcelNumberForm">Complete!</button>
+      </footer>
+    </div>
+    <app-footer></app-footer>
+  </section>
+</main>

@@ -1,0 +1,44 @@
+<main>
+  <a [routerLink]="headerBackIconLink" class="desktop-content desktop-icon"><img [src]="headerBackIconImg" alt="Back"/></a>
+  <section>
+    <app-header class="header-height">
+      <a [routerLink]="headerBackIconLink" icon><img [src]="headerBackIconImg" alt="Back"/></a>
+      <ng-container heading>Register</ng-container>
+    </app-header>
+
+    <div class="content flex-grow pyx-2">
+      <p class="paxi-heading3 desktop-content">Verify mobile</p>
+      <p class="paxi-paragraph">OTP was sent to <b>+27 {{intendedPhone.slice(2) }}</b></p>
+      <p class="paxi-paragraph">
+        Please input the {{ inputSize }} digit code here. Never share your OTP with anyone.
+      </p>
+      <br>
+      <span class="paxi-label">*OTP</span>
+
+      <!-- In "app-otp-input" the value of size defines how many input boxes you want &
+      for all input box to align in one line the "grid-template-columns" value should be same as size. -->
+      <app-otp-input
+        #input="ngModel"
+        [(ngModel)]="enteredOTP"
+        [size]="inputSize"
+        [width]="otpWidth"
+        [height]="otpHeight"
+        [ngClass]="{ 'invalid-input': isInvalid }"
+        [ngStyle]="{
+          'grid-template-columns': 'repeat('+ inputSize +', auto)',
+          'gap': '8px',
+        }"
+      ></app-otp-input>
+      <span class="error-text" *ngIf="isInvalid">{{ errorMsg }}</span>
+
+    </div>
+
+    <div class="paxi-btn-grp mb-2">
+      <button class="paxi-btn-large paxi-btn-primary-outline" (click)="resendOTP()">Resend Code</button>
+      <button class="paxi-btn-large paxi-btn-primary" [disabled]="enteredOTP?.length !== inputSize" (click)="verifyOTP()">Verify</button>
+    </div>
+    <app-footer class="mobile"></app-footer>
+  </section>
+
+  <app-footer class="desktop-content desktop-footer"></app-footer>
+</main>

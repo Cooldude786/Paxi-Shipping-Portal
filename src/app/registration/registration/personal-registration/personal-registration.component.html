@@ -1,0 +1,71 @@
+<main>
+  <a [routerLink]="headerBackIconLink" class="desktop-content desktop-icon"><img [src]="headerBackIconImg" alt="Back"/></a>
+  <section>
+
+    <app-header class="header-height">
+      <a routerLink="/registration" icon><img src="assets/img/icon-left.svg" alt="Back"></a>
+      <ng-container heading>Register For You</ng-container>
+    </app-header>
+
+    <div class="content flex-grow pyx-2">
+      <p class="paxi-subheading">PAXI Portal For You</p>
+      <p class="paxi-paragraph">We just need a few details from you to get stated with your personal PAXI account.</p>
+
+      <form [formGroup]="personalForm" id="personalForm" (ngSubmit)="onSubmit()">
+
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="email">*Email Address</label>
+          <mat-form-field>
+            <input matInput formControlName="email" id="email" placeholder="Email Address" autocomplete="off">
+            <mat-error *ngIf="validationError('email', 'required')">Please provide your email.</mat-error>
+            <mat-error *ngIf="validationError('email', 'email')">Please enter a valid email address, like example@example.com.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="password">*Password</label>
+          <mat-form-field>
+            <input matInput formControlName="password" id="password" placeholder="Password" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="validationError('password', 'required')">Please provide your password.</mat-error>
+            <mat-error *ngIf="validationError('password', 'pattern')">Please ensure your password contains numbers, capital and letter and a special character such as !*%&</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="confirmPassword">*Confirm Password</label>
+          <mat-form-field>
+            <input matInput formControlName="confirmPassword" id="confirmPassword" placeholder="Password" [type]="confirmPasswordHide ? 'password' : 'text'">
+            <!-- <button mat-icon-button matSuffix (click)="confirmPasswordHide = !confirmPasswordHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="confirmPasswordHide">
+              <mat-icon>{{confirmPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button> -->
+            <mat-icon matSuffix (click)="confirmPasswordHide = !confirmPasswordHide">{{confirmPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="validationError('confirmPassword', 'required')">Please provide your confirm password.</mat-error>
+            <mat-error *ngIf="validationError('confirmPassword', 'confirmedValidator')">The passwords you entered do not match. Please check and re-enter.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- ***IMP NOTE*** :- The touched will only trigger when an blur event happen & especially for checkbox in safari touch is not working properly so I have used dirty instead of touched-->
+        <div class="paxi-checkbox my-1" [class.error]="getForm['termsCondition'].dirty && getForm['termsCondition'].invalid">
+          <input type="checkbox" id="termsCondition" formControlName="termsCondition">
+          <label for="termsCondition">I accept PAXI's <a href="https://www.paxi.co.za/terms-conditions" target="_blank">Terms & Conditions</a></label>
+          <ng-container *ngIf="getForm['termsCondition'].dirty && getForm['termsCondition'].invalid">
+            <span class="error-text" *ngIf="validationError('termsCondition', 'required')" style="margin-left: 15px;">Please agree to the PAXI's terms & conditions</span>
+          </ng-container>
+        </div>
+        <footer class="mb-2 desktop">
+          <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill" type="submit" [disabled]="!personalForm.valid" form="personalForm">Register</button>
+        </footer>
+      </form>
+
+    </div>
+
+    <div class="captcha">
+      <!-- <img src="assets/img/captcha.svg" alt="Captcha"> -->
+    </div>
+
+    <footer class="mb-2 mobile">
+      <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill" type="submit" [disabled]="!personalForm.valid" form="personalForm">Register</button>
+    </footer>
+  </section>
+</main>

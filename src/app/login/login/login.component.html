@@ -1,0 +1,67 @@
+<main>
+  <a [routerLink]="headerBackIconLink" class="desktop-content desktop-icon"><img [src]="headerBackIconImg" alt="Back"/></a>
+  <section>
+    <app-header class="header-height">
+      <a [routerLink]="headerBackIconLink" icon><img [src]="headerBackIconImg" alt="Back"></a>
+      <img src="assets/img/logo/logo.svg" alt="Logo" logo>
+    </app-header>
+
+    <div class="content flex-grow pyx-2">
+      <p class="paxi-heading3 desktop-content mb-3">Login</p>
+      <p class="paxi-paragraph">Welcome to the PAXI Portal. Send it Easy, Send it with PAXI! </p>
+
+      <!-- Alert start -->
+      <ng-container *ngIf="authError">
+        <div class="alert-preview ">
+          <div class="alert alert-danger alert-dismissable"
+            [class.fade-in]="showAlert"
+            [class.fade-out]="!showAlert"
+          >
+          <button type="button" data-dismiss="alert" aria-label="close" class="close" (click)="showAlert = false">
+            <span aria-hidden="true">×</span>
+          </button>
+          <strong>oops!</strong>&nbsp;{{ authError.message }}
+          </div>
+        </div>
+      </ng-container>
+      <!-- Alert end -->
+
+      <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="email">*Email Address</label>
+          <mat-form-field>
+            <input matInput formControlName="email" id="email" placeholder="e.g. example@email.com" autocomplete="off">
+            <mat-error *ngIf="validationError('email', 'required')">Please provide your email.</mat-error>
+            <mat-error *ngIf="validationError('email', 'email')">Please enter a valid email address, like example@example.com.</mat-error>
+          </mat-form-field>
+          <!-- <span class="error-text" *ngIf="authError && authError.type == 'email'">{{ authError.message }}</span> -->
+        </div>
+
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="password">*Password</label>
+          <mat-form-field>
+            <input matInput formControlName="password" id="password" placeholder="e.g sjQcgh6!" [type]="hide ? 'password' : 'text'">
+            <!-- <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button> -->
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="validationError('password', 'required')">Please provide your password.</mat-error>
+            <mat-error *ngIf="validationError('password', 'pattern')">Please ensure your password contains numbers, capital and letter and a special character such as !*%&</mat-error>
+            <!-- <mat-error *ngIf="authError && authError.type == 'password'">{{ authError.message }}</mat-error> -->
+          </mat-form-field>
+          <a [routerLink]="['/login/forget-password']" class="paxi-body2 text-right" style="text-decoration: none;">Forgot Password?</a>
+        </div>
+        <footer class="mb-2 desktop">
+          <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill mb-2" type="submit" form="loginForm">Log In</button>
+          <p class="text-center paxi-button1">Don’t have an account? <a href="#" routerLink="/registration" class="paxi-semibold-button1" style="text-decoration: none;">Register</a></p>
+        </footer>
+      </form>
+
+    </div>
+
+    <footer class="mb-2 mobile">
+      <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill mb-2" type="submit" form="loginForm">Log In</button>
+      <p class="text-center paxi-button1">Don’t have an account? <a href="#" routerLink="/registration" class="paxi-semibold-button1" style="text-decoration: none;">Register</a></p>
+    </footer>
+  </section>
+</main>

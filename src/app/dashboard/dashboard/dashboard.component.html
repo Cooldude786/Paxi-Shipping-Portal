@@ -1,0 +1,196 @@
+<main>
+  <section class="desktopsection">
+    <app-header class="header-height">
+      <app-user-sidebar icon></app-user-sidebar>
+      <img src="assets/img/logo/logo.svg" alt="Logo" logo />
+      <div class="user-id" userdetail>
+        <p class="paxi-caption1">Personal Account ID</p>
+        <p class="paxi-body">{{shipperId}}</p>
+      </div>
+    </app-header>
+    <div class="content pyx-2 flex-grow dashboard" *ngIf="isGuid; else createProfile">
+      <mat-card class="paxi-register_parcel paxi-sm_shadow">
+        <div class="content_div">
+          <div class="text">
+            <div class="heading_div mb-2">
+              <p class="paxi-heading5">Send it easy, send it with PAXI.<br />It’s easy, convenient, affordable and reliable.</p>
+            </div>
+            <div class="subheading_div mb-2">
+              <p class="paxi-dashbody">
+                Register your orders before you get to the counter! Fill in the
+                details and take your item to your nearest PAXI Point.
+              </p>
+            </div>
+          </div>
+          <div class="button">
+            <button
+              class="paxi-btn-large paxi-btn-primary"
+              type="button"
+              routerLink="/register-parcel"
+            >
+              Register New Parcel
+            </button>
+          </div>
+        </div>
+      </mat-card>
+      <div class="search-input mt-3">
+        <div class="search paxi-sm_shadow">
+          <img class="searchimg"src="assets/img/icon-search.svg" width=25 />
+          <input type="text" placeholder="Search" [(ngModel)] = "searchtext" (focusout)="filter()" (keydown)="handleKeyDown($event)"/>
+          <!-- <img class="filterimg"src="assets/img/icon-filter.svg" width=25 /> -->
+        </div>
+        <div class="status paxi-sm_shadow">
+          <mat-select placeholder="Status Group" (selectionChange)="statusFilterGroupdesktop($event)">
+            <mat-option *ngFor="let status of statusObj" [value]="status.name">
+              <mat-radio-button>{{status.name}} PARCELS</mat-radio-button>
+            </mat-option>
+          </mat-select>
+        </div>
+      </div>
+      <!-- <div class="mt-3 parcelStatus">
+        <div class="statusFilter mb-1">
+          <div class="cat action" *ngFor="let status of statusObj;">
+            <label>
+              <input type="radio" name="statusradio" value="{{ status.name }}" (click)="statusFilterGroup($event)">
+              <span class="paxi-bodyb4">{{ status.name }} PARCELS</span>
+            </label>
+          </div>
+        </div>
+      </div> -->
+      <div tabindex="0" class="scrollable-content"
+        infiniteScroll
+        [infiniteScrollDistance]="0.5"
+        [infiniteScrollThrottle]="500"
+        [infiniteScrollDisabled]="hasMoreData"
+        (scrolled)="onScroll()" *ngIf="parcelList != undefined && parcelList.length > 0">
+        <div tabindex="0" class="parcelListing mt-2 mobile">
+          <div class="parecl mb-2" *ngFor="let parcel of parcelList">
+            <div class="firstStatus">
+              <div
+                class="statusDiv leftside"
+                [ngClass]="{
+                  registerOnline: parcel.parcelStatus.customerDescription !== 'EXCEPTION' && parcel.parcelStatus.customerDescription !== 'EXCEPTION CLOSURE',
+                  reportTodepot: parcel.parcelStatus.customerDescription === 'EXCEPTION' || parcel.parcelStatus.customerDescription === 'EXCEPTION CLOSURE'
+                }"
+              >
+                <p class="paxi-bodyb4">
+                  {{ parcel.parcelStatus.customerDescription }}
+                </p>
+              </div>
+              <div class="rightside">
+                <span class="paxi-bodyb4" (click) = "parcel_history(parcel)">
+                  <img src="assets/img/arrow-circle-right.svg" width="45" alt="">
+                </span>
+              </div>
+            </div>
+            <div class="parceDetail mt-1">
+              <div class="parcelHeader">
+                <div class="tracking_Detail">
+                  <label class="paxi-caption1">Tracking Number</label><br />
+                  <span class="paxi-body">{{ parcel.customerRefCode ? parcel.customerRefCode : '-' }}</span>
+                </div>
+                <div class="date_created">
+                  <label class="paxi-caption1">Date Created</label><br />
+                  <span class="paxi-body">{{parcel.createDatetime | date: 'dd MMM'}}</span>
+                </div>
+              </div>
+              <div class="destination mt-1">
+                <label class="paxi-caption1">Destination</label><br />
+                <span class="paxi-body">{{ parcel.destinationNode.nodeShortName }} ({{parcel.destinationNode.nodeCode}})</span>
+              </div>
+              <div class="description mt-1 mb-2">
+                <label class="paxi-caption1">Description</label><br />
+                <span class="paxi-body">{{ parcel.description }}</span>
+              </div>
+              <hr />
+              <div class="parcelHeader mt-2">
+                <div class="tracking_Detail">
+                  <label class="paxi-caption1">Recipient Mobile</label><br />
+                  <span class="paxi-body">{{ parcel.receiver.cellphone ? '+27 ' + parcel.receiver.cellphone.slice(2) : '-' }}</span>
+                </div>
+                <div class="date_created recipient_name">
+                  <label class="paxi-caption1">Recipient</label><br />
+                  <span class="paxi-body">{{ parcel.receiver.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div tabindex="0" class="parcelListing mt-2 desktop">
+          <table id="parcelTable">
+            <thead>
+              <th>Created Date</th>
+              <th>Description</th>
+              <th>Recipient Name</th>
+              <th>Recipient Mobile</th>
+              <th>Destination</th>
+              <th>Status</th>
+              <th>Tracking Number</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let parcel of parcelList">
+                <td><span class="paxi-body4">{{parcel.createDatetime | date: 'dd MMM YYYY'}}</span></td>
+                <td><span class="paxi-body4">{{parcel.description}}</span></td>
+                <td><span class="paxi-body4">{{parcel.receiver.name}}</span></td>
+                <td><span class="paxi-body4">{{ parcel.receiver.cellphone ? '+27 ' + parcel.receiver.cellphone.slice(2) : '-'}}</span></td>
+                <td><span class="paxi-body4">{{ parcel.destinationNode.nodeShortName }} ({{parcel.destinationNode.nodeCode}})</span></td>
+                <td>
+                  <div (click) = "parcel_history(parcel)"
+                    class="statusDiv"
+                    [ngClass]="{
+                      registerOnline: parcel.parcelStatus.customerDescription !== 'EXCEPTION' && parcel.parcelStatus.customerDescription !== 'EXCEPTION CLOSURE',
+                      reportTodepot: parcel.parcelStatus.customerDescription === 'EXCEPTION' || parcel.parcelStatus.customerDescription === 'EXCEPTION CLOSURE'
+                    }"
+                  >
+                    <span class="paxi-body4">
+                      {{ parcel.parcelStatus.customerDescription }}
+                    </span>
+                  </div>
+                </td>
+                <td><span class="paxi-body4">{{ parcel.customerRefCode ? parcel.customerRefCode : '-' }}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="hasMoreData && parcelList !== undefined && parcelList.length !== 0" class="no_record_div">
+        <h3 class="paxi-heading5 no_more_record">No more records to show</h3>
+      </div>
+      <div class="parcelListing mt-2 errordiv" *ngIf="parcelList != undefined && parcelList.length == 0">
+        <div class="error_content">
+          <img src="assets/img/chat-icon.png" width="60"/>
+          <p class="paxi-subheading4">
+            Currently, there are no parcel records found.
+          </p>
+        </div>
+        <!-- <button type="button" class="paxi-btn-large paxi-button2 btn mt-2 mobile">
+          Import Historical Parcels
+        </button> -->
+      </div>
+    </div>
+    <ng-template #createProfile>
+      <div class="content pyx-2 flex-grow dashboard">
+        <mat-card class="paxi-register_parcel paxi-sm_shadow">
+          <div class="content_div">
+            <div class="text">
+              <div class="heading_div mb-2">
+                <p class="paxi-heading5">Almost there!</p>
+              </div>
+              <div class="subheading_div mb-2">
+                <p class="paxi-dashbody">
+                  Complete your profile with a few quick steps and start pre-registering parcels online. It's that easy.
+                </p>
+              </div>
+            </div>
+            <div class="button">
+              <button class="paxi-btn-large paxi-btn-primary" type="button" routerLink="/account-management/complete-profile-details">
+                Complete Profile
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </ng-template>
+    <app-footer></app-footer>
+  </section>
+</main>

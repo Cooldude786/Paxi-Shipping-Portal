@@ -1,0 +1,54 @@
+<main>
+  <a [routerLink]="headerBackIconLink" class="desktop-content desktop-icon"><img [src]="headerBackIconImg" alt="Back"/></a>
+  <section>
+
+    <app-header class="header-height">
+      <a routerLink="/landing-page" icon><img src="assets/img/icon-left.svg" alt="Back"></a>
+      <img src="assets/img/logo/logo.svg" alt="Logo" logo>
+    </app-header>
+
+    <div class="content pyx-2 flex-grow">
+      <p class="paxi-heading3 desktop-content mb-3">Register</p>
+      <p class="paxi-body">At PAXI, we understand that everyone needs a parcel delivery service, but not everyone
+        needs all the features and frills. </p>
+      <br />
+      <p class="paxi-paragraph">Please choose what describes you more</p>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" id="form">
+        <div class="radio-group" *ngFor="let item of registrationType;  let i = index">
+          <ng-container *ngIf="item.disabled; else activeRadio">
+            <!-- **NOTE** Add this attribute after tooltip attr below 'flow="left"' to position tooltip by default it is up you can do left,right & down-->
+            <div class="radio-button pyx-1 my-1" *ngIf="item.disabled" tooltip='coming-soon'>
+              <div class="paxi-radio">
+                <input type="radio" [id]="item.value" formControlName="registrationTypeValue" [value]="item.value" [attr.disabled]="item.disabled">
+              </div>
+              <label [for]="item.value">
+                <p class="paxi-subheading">{{item.title}}</p>
+                <p class="paxi-body">{{item.label}}</p>
+              </label>
+            </div>
+          </ng-container>
+          <ng-template #activeRadio>
+            <div class="radio-button pyx-1 my-1">
+              <div class="paxi-radio">
+                <input type="radio" [id]="item.value" formControlName="registrationTypeValue" [value]="item.value">
+              </div>
+              <label [for]="item.value">
+                <p class="paxi-subheading">{{item.title}}</p>
+                <p class="paxi-body">{{item.label}}</p>
+              </label>
+            </div>
+          </ng-template>
+        </div>
+        <footer class="mb-2 desktop">
+          <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill" [disabled]="!form.valid" type="submit"
+            form="form">Next</button>
+        </footer>
+      </form>
+    </div>
+    <footer class="mb-2 mobile">
+      <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill" [disabled]="!form.valid" type="submit"
+        form="form">Next</button>
+    </footer>
+  </section>
+</main>

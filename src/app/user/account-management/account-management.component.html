@@ -1,0 +1,39 @@
+<main>
+  <section class="desktopsection">
+    <app-header class="header-height">
+      <app-user-sidebar icon></app-user-sidebar>
+      <ng-container heading>Account Management</ng-container>
+      <div class="user-id" userdetail>
+        <p class="paxi-caption1">Personal Account ID</p>
+        <p class="paxi-body">{{shipperId$ | async}}</p>
+      </div>
+    </app-header>
+
+    <div class="content flex-grow pyx-2">
+      <div class="paxi-input-group my-3">
+        <span class="paxi-caption1 mb-1">Personal Account ID</span>
+        <span class="paxi-label">{{ shipperId$ | async }}</span>
+      </div>
+      <div class="paxi-input-group my-3">
+        <span class="paxi-caption1 mb-1">Email</span>
+        <span class="paxi-label">{{ email$ | async }}</span>
+      </div>
+      <div class="paxi-input-group my-3">
+        <span class="paxi-caption1 mb-1">Mobile</span>
+        <span class="paxi-label">+27 {{ (mobile$ | async) | slice:2 }}</span>
+        <!-- <span class="paxi-label">071 565 2987</span> -->
+      </div>
+      <div class="paxi-input-group my-3" *ngIf="saId$ | async as saID">
+        <span class="paxi-caption1 mb-1">South African ID</span>
+        <span class="paxi-label">{{ saID }}</span>
+      </div>
+      <div class="paxi-input-group my-3" *ngIf="passportNumber$ | async as passportNumber">
+        <span class="paxi-caption1 mb-1">Passport Number</span>
+        <span class="paxi-label">{{ passportNumber }}</span>
+      </div>
+      <button class="paxi-btn-large paxi-btn-secondary paxi-btn-fill" routerLink="update-password">Update Password</button>
+    </div>
+
+    <app-footer></app-footer>
+  </section>
+</main>

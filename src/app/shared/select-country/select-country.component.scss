@@ -1,0 +1,129 @@
+@import "../../../variables.scss";
+
+.select-box {
+  position: relative;
+  svg {
+    height: 1.5rem;
+  }
+
+  input {
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    padding: 1rem .6rem;
+    border: 2px solid transparent;
+    outline: none;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.0025em;
+    background-color: $color-white;
+    color: $paxi-text-secondary;
+    border-radius: .5rem;
+
+    &::placeholder {
+      color: $paxi-secondary-hover-state;
+    }
+
+    &:hover {
+      border-color: $paxi-primary-orange;
+    }
+
+    &:focus {
+      border-color: $paxi-primary-orange-focused;
+      color: $paxi-text-secondary;
+    }
+  }
+
+  .options {
+    z-index: 100;
+    position: absolute;
+    top: 6.5rem;
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+
+    background-color: $color-white;
+    border-radius: .5rem;
+
+    &::before {
+      position: absolute;
+      content: "";
+      left: 1rem;
+      top: -1.1rem;
+
+      width: 0;
+      height: 0;
+      border: .6rem solid transparent;
+      border-bottom-color: $slider-bg;
+    }
+
+    input.search-box {
+      background-color: $slider-bg;
+      color: $paxi-text-primary;
+      border-radius: .5rem .5rem 0 0;
+      caret-color: $paxi-text-primary;
+
+      &:hover {
+        opacity: .7;
+        border-color: transparent;
+      }
+
+      &:focus {
+        border-color: transparent;
+        opacity: 1;
+      }
+      &::placeholder {
+        color: $paxi-text-secondary;
+      }
+    }
+
+    ol {
+      padding: 0;
+      list-style: none;
+      max-height: 15rem;
+      overflow: overlay;
+
+      &::-webkit-scrollbar {
+        width: 0.6rem;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        width: 0.4rem;
+        height: 3rem;
+        background-color: #ccc;
+        border-radius: .4rem;
+      }
+
+      li {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $slider-bg;
+        }
+
+        svg {
+          height: 1.2rem;
+        }
+
+        .country-name {
+          margin-left: .8rem;
+        }
+      }
+    }
+
+    .active {
+      background-color: $slider-bg;
+    }
+  }
+}
+
+
+.disabled {
+  color: #00000061 !important;
+  border-color: transparent !important;
+  cursor: default;
+}

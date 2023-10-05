@@ -1,0 +1,25 @@
+.content {
+  display: flex;
+  justify-content: center;
+  .text-center{
+    width: 240px;
+    div{
+      margin-top: 10px;
+    }
+  }
+  .sliderbg img{
+    width: 100%;
+  }
+  h2{
+    font-size: 32px;
+    margin: 12px 0 0;
+    font-weight: 500;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  section{
+    background: #fff;
+    min-height: unset;
+  }
+}
+

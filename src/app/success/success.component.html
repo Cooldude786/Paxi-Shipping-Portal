@@ -1,0 +1,35 @@
+<main>
+  <section class="desktopsection">
+
+    <app-header class="header-height successHeader">
+      <!-- <app-user-sidebar *ngIf="successData?.isSidebar" icon></app-user-sidebar>
+      <a *ngIf="!successData?.isSidebar" routerLink="{{ successData?.backIconRouterLink }}" icon><img src="assets/img/icon-left.svg" alt="Back"></a>
+
+      <ng-container *ngIf="successData?.heading as heading" heading>{{ heading }}</ng-container> -->
+      <img src="assets/img/logo/logo.svg" alt="Logo" logo>
+    </app-header>
+
+    <div class="content flex-grow">
+
+      <figure class="text-center">
+        <div class="sliderbg">
+          <img src="{{ successData?.imgPath }}" alt="success image">
+        </div>
+        <figcaption>
+          <p class="paxi-heading4" *ngIf="successData?.title as title">{{ title }}</p>
+          <p class="paxi-heading3" *ngIf="successData?.subTitle as subTitle">{{ subTitle }}</p>
+          <p class="paxi-subheading4" *ngIf="successData?.decription as description">{{ description }}</p>
+        </figcaption>
+      </figure>
+
+    </div>
+
+    <footer class="mb-2">
+      <button class="paxi-btn-large paxi-btn-primary paxi-btn-fill" routerLink="{{ successData?.buttonRouterLink }}">{{ successData?.button }}</button>
+      <ng-container *ngIf="successData?.buttonOptional">
+        <button class="paxi-btn-large paxi-btn-fill dashboardbtn mt-2" routerLink="{{ successData?.buttonOptionalRouterLink }}">{{ successData?.buttonOptional }}</button>
+      </ng-container>
+    </footer>
+    <app-footer></app-footer>
+  </section>
+</main>

@@ -1,0 +1,69 @@
+@import "../../../../variables.scss";
+
+.desktop-content {
+  display: none;
+}
+
+@media only screen and (min-width: 1200px) {
+  main {
+    background: $paxi-bg-grey;
+
+    .desktop-icon {
+      position: absolute;
+      top: 8%;
+      left: 5%;
+    }
+
+    section {
+      background: $paxi-bg-grey;
+      width: unset;
+
+      app-header {
+        display: none;
+      }
+
+      .content {
+        align-self: center;
+        padding: unset;
+        p {
+          text-align: center;
+
+          &:first-child {
+            margin-block: 18px;
+          }
+        }
+
+        .radio-group {
+          display: flex;
+
+          label {
+            margin-right: 1rem;
+          }
+        }
+      }
+
+      footer {
+        flex-grow: 2;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 4rem !important;
+
+        button {
+          width: 300px;
+        }
+      }
+    }
+  }
+
+  .desktop-content {
+    display: block;
+  }
+  .mobile{
+    display: none;
+  }
+  .desktop-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}

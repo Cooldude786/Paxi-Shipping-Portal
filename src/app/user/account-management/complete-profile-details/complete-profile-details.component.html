@@ -1,0 +1,159 @@
+<main>
+  <a [routerLink]="headerBackIconLink" class="desktop-content desktop-icon"><img [src]="headerBackIconImg" alt="Back"/></a>
+  <section>
+    <app-header class="header-height">
+      <a [href]="headerBackIconLink" [routerLink]="headerBackIconLink" icon><img [src]="headerBackIconImg" alt="Back"/></a>
+      <ng-container heading>Profile Details</ng-container>
+    </app-header>
+
+    <div class="content flex-grow pyx-2">
+      <p class="paxi-heading3 desktop-content mb-3">Profile Details</p>
+      <p class="paxi-paragraph">We just need a few details from you.</p>
+
+      <form [formGroup]="profileForm" id="profileForm" (ngSubmit)="onSubmit()">
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="firstName">*First Name</label>
+          <mat-form-field>
+            <input
+              noWhiteSpace
+              noSpecialCharactersOnly
+              matInput
+              formControlName="firstName"
+              id="firstName"
+              placeholder="First Name"
+            />
+            <mat-error *ngIf="validationError('firstName', 'required')">Please provide your First name.</mat-error>
+            <mat-error *ngIf="validationError('firstName', 'maxlength')">Please enter a First name between 1 and 74 characters.</mat-error>
+            <mat-error *ngIf="validationError('firstName', 'pattern')">Please enter a valid First name, like John.</mat-error>
+            <mat-error *ngIf="validationError('firstName', 'notIncludeSpace')">Please enter a valid First name, like John..</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="lastName">*Last Name</label>
+          <mat-form-field>
+            <input
+              matInput
+              formControlName="lastName"
+              id="lastName"
+              placeholder="Last Name"
+            />
+            <mat-error *ngIf="validationError('lastName', 'required')">Please provide your Last name.</mat-error>
+            <mat-error *ngIf="validationError('lastName', 'maxlength')">Please enter a Last name between 1 and 74 characters.</mat-error>
+            <mat-error *ngIf="validationError('lastName', 'pattern')">Please enter a valid First name, like Smith.</mat-error>
+          <mat-error *ngIf="validationError('lastName', 'notIncludeSpace')">Please enter a valid First name, like Smith.</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="lastName">*Identification Type</label>
+          <div class="radio-group">
+            <div class="paxi-radio my-1"
+              [class.error]="getForm['idTypeValue'].dirty && getForm['idTypeValue'].invalid"
+              *ngFor="let item of identificationType"
+            >
+              <input type="radio" [id]="item.value" formControlName="idTypeValue" name="idTypeValue" [value]="item.value" />
+              <label class="ml-1" [for]="item.value">{{ item.label }}</label>
+            </div>
+          </div>
+          <ng-container *ngIf="showIdTypeValueErr && getForm['idTypeValue'].invalid">
+            <span class="error-text" *ngIf="validationError('idTypeValue', 'required')" >
+              Please select the identification type.
+            </span>
+          </ng-container>
+        </div>
+
+        <div class="paxi-input-group mt-1" *ngIf="getForm['idTypeValue'].value === identificationType[0].value">
+          <label class="paxi-label py-1" for="idNumber">*ID Number</label>
+          <mat-form-field>
+            <input matInput formControlName="idNumber" id="idNumber" placeholder="e.g. 9306786442578" autocomplete="off" />
+            <mat-error *ngIf="validationError('idNumber', 'required')">
+              Please provide your ID number.
+            </mat-error>
+            <mat-error *ngIf="validationError('idNumber', 'pattern')">
+              Please enter a valid ID number, like 9306786442578.
+            </mat-error>
+            <!-- <mat-error *ngIf="validationError('idNumber', 'maxlength')">
+              Please enter an Id number of exactly 13 digits.
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="paxi-input-group mt-1" *ngIf="getForm['idTypeValue'].value === identificationType[1].value">
+          <label class="paxi-label py-1" for="passportNumber">*Passport Number</label>
+          <mat-form-field>
+            <input matInput formControlName="passportNumber" id="passportNumber" placeholder="e.g. N1000011" autocomplete="off" />
+            <mat-error *ngIf="validationError('passportNumber', 'required')">
+              Please provide your Passport number.
+            </mat-error>
+            <mat-error *ngIf="validationError('passportNumber', 'pattern')">
+              Please enter a valid passport number, like SA1234567.
+            </mat-error>
+          </mat-form-field>
+
+          <app-select-country (sendCountryCode)="receiveCountryCode($event)" [fetchCountryCode]="fetchCountry" [showCountries]="true"></app-select-country>
+          <!-- Added <mat-error> tag below to set it with the spacing of the form  -->
+          <mat-error></mat-error>
+        </div>
+
+        <div class="paxi-input-group">
+          <label class="paxi-label py-1" for="lastName">*Mobile Number</label>
+          <app-phone-input (sendMobile)="receiveMobile($event)" [fetchMobileValue]="fetchedMobile"></app-phone-input>
+
+          <span class="error-text mt-1" *ngIf="showMobileErr && validationError('contactNumber', 'required')" style="margin-left: 15px">
+            Please provide your Mobile number.
+          </span>
+          <span class="error-text mt-1" *ngIf="validationError('contactNumber', 'minlength')" style="margin-left: 15px">
+            Please enter a Mobile number between 9 and 10 digits.
+          </span>
+          <span class="error-text mt-1" *ngIf="validationError('contactNumber', 'maxlength')" style="margin-left: 15px">
+            Please enter a Mobile number between 9 and 10 digits.
+          </span>
+          <span class="error-text mt-1" *ngIf="validationError('contactNumber', 'pattern')" style="margin-left: 15px">
+            <!-- Make sure your mobile number contains only numbers. You cannot exceed 9 digits without leading zero and 10 digits with leading zero! -->
+            Please enter a valid Mobile number, like 0715250910.
+          </span>
+        </div>
+
+        <div class="paxi-input-group mt-1">
+          <div class="paxi-body4 py-1">
+            May PAXI and Pepkor use your information to inform you about our
+            products and services?
+          </div>
+          <div class="radio-group">
+            <div class="paxi-radio my-1">
+              <input
+                type="radio"
+                id="Y"
+                formControlName="marketingConsent"
+                name="marketingConsent"
+                value="Y"
+                checked="true"
+              />
+              <label class="ml-1" for="yes">Yes, I choose to opt in</label>
+            </div>
+            <div class="paxi-radio my-1">
+              <input
+                type="radio"
+                id="N"
+                formControlName="marketingConsent"
+                name="marketingConsent"
+                value="N"
+              />
+              <label class="ml-1" for="no">No, I want to opt out</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <footer class="mb-2">
+      <button [disabled]="profileForm.invalid" [class]="footerBtnClass" type="submit" form="profileForm">
+      <!-- <button [class]="footerBtnClass" type="submit" form="profileForm"> -->
+        Save
+      </button>
+    </footer>
+    <app-footer class="mobile"></app-footer>
+  </section>
+
+  <app-footer class="desktop-content desktop-footer"></app-footer>
+</main>

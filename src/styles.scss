@@ -1,0 +1,818 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "variables.scss";
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+ul{
+  list-style-type: none;
+}
+// Global code setting size of the for all screens to mobile first view.
+main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  section {
+    display: flex;
+    flex-flow: column;
+
+    position: relative;
+    // height: 812px;
+    min-height: 812px;
+    width: 375px;
+    background: $paxi-bg-grey;
+  }
+}
+
+// code for slick slider button('dots') it is mandatory to put in styles.scss to modify the default css
+
+/* ============================ slick-dots ============================ */
+
+.slick-dots {
+  li {
+    margin: 0 -1.5px;
+
+    button:before {
+      color: $paxi-tertiary-grey;
+      opacity: 1;
+      font-size: .65rem;
+    }
+  }
+
+  li.slick-active {
+    button:before {
+      color: $paxi-primary-orange !important;
+      opacity: 1;
+    }
+  }
+}
+
+/* ============================ Common Classes ============================ */
+.header-height {
+  // height: 10%;
+  height: 5rem;
+}
+
+/* ============================ utility classes ============================ */
+.text-center {
+  align-self: center;
+  text-align: center;
+}
+
+.text-right {
+  align-self: flex-end;
+  text-align: end;
+}
+
+// margin
+.mx-1 {
+  margin-inline: 10px;
+}
+.my-1 {
+  margin-block: 10px;
+}
+.my-2 {
+  margin-block: 20px;
+}
+.my-3 {
+  margin-block: 25px;
+}
+.mx-2 {
+  margin-inline: 20px;
+}
+.mb-1 {
+  margin-bottom: 10px !important;
+}
+.mb-2 {
+  margin-bottom: 20px !important;
+}
+.mb-4 {
+  margin-bottom: 40px;
+}
+.mt-1 {
+  margin-top: 10px !important;
+}
+.mt-2 {
+  margin-top: 20px !important;
+}
+.mt-25{
+  margin-top: 25px !important;
+}
+.mt-3 {
+  margin-top: 30px !important;
+}
+.mt-4 {
+  margin-top: 40px;
+}
+.mt-5 {
+  margin-top: 50px;
+}
+.ml-1 {
+  margin-left: 10px;
+}
+.mr-1{
+  margin-right: 10px;
+}
+// Margin 20px (Parth Code)
+.ml-2 {
+  margin-left: 20px;
+}
+.mr-2 {
+  margin-right: 20px;
+}
+// padding
+.pyx-1 {
+  padding: 15px 10px;
+}
+// This padding is specially used for the mobile screen content area
+.pyx-2 {
+  padding: 15px 20px;
+}
+.py-1 {
+  padding-block: 10px;
+}
+.pa-2{
+  padding: 20px;
+}
+
+// flex-grow
+.flex-grow {
+  flex-grow: 1;
+}
+
+
+/* ============================ Paxi Components ============================ */
+.paxi {
+
+  // Parth Work
+  &-bgBlue{
+    background: $paxi-bg-blue;
+  }
+  &-midBlue{
+    background: $paxi-bg-midblue;
+  }
+  &-sm_shadow{
+    box-shadow: $sm-shadow;
+  }
+  &-heading5{
+    font-family: Rubik;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: $paxi-primary-navy-blue;
+  }
+  //styleName: Button/Button 2;
+  &-button2{
+    font-family: Rubik;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: $paxi-primary-orange;
+  }
+  //Caption/Caption 1
+  &-caption1{
+    font-family: Rubik;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.004em;
+    text-align: left;
+    color: $paxi-text-tertiary;
+  }
+  &-bodyb4{
+    font-family: Rubik;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.0025em;
+    text-align: left;
+    color: $color-white;
+  }
+
+  // Bhargav's work
+
+  // styleName: Mobile/Body 02/Body 14 medium
+  &-body2 {
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+    color: $paxi-primary-navy-blue;
+  }
+
+  // styleName: Button/Button 1;
+  &-button1{
+    font-family: 'Rubik';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: $paxi-text-secondary;
+  }
+
+  //styleName: Button/Button 1;
+  &-semibold-button1{
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: $paxi-primary-orange;
+  }
+
+  //heading(Subtitle 1/Bold)
+  &-heading{
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $color-white;
+  }
+  // Heading (Heading/Heading 4)
+  &-heading4 {
+    color: $paxi-primary-navy-blue;
+    text-align: center;
+    font-family: 'Rubik';
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0px;
+  }
+
+  // Heading (Heading/Heading 3)
+  &-heading3 {
+    text-align: center;
+    font-family: 'Rubik';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -1px;
+    color: $paxi-primary-navy-blue;
+  }
+
+  // Sub-Heading (Sub heading/SH 4)
+  &-subheading4 {
+    font-family: 'Rubik';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: $paxi-text-secondary;
+  }
+
+  // Sub-Heading (Sub heading/SH 3)
+  &-subheading {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height, or 120% */
+    letter-spacing: -0.02em;
+    /* Paxi Primary/Navy Blue */
+    color: $paxi-primary-navy-blue;
+  }
+
+  // Sub-Heading (Sub heading/SH 2)
+  &-subheading2{
+    font-family: 'Rubik';
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: $paxi-bg-blue;
+  }
+
+  // body (Body/Body 3)
+  &-body {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* or 112% */
+    letter-spacing: 0.0025em;
+    /* Paxi Text/Secondary */
+    color: $paxi-text-secondary;
+  }
+
+  // Body/Body 4
+  &-body4 {
+    color: $paxi-text-secondary;
+    /* Body/Body 4 */
+    font-size: 14px;
+    font-family: Rubik;
+    letter-spacing: 0.035px;
+  }
+
+  // paragraph (Sub heading/SH 4)
+  &-paragraph {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+    letter-spacing: -0.02em;
+    /* Paxi Text/Primary */
+    color: $paxi-text-primary;
+  }
+
+  // label (Paxi Body/B3)
+  &-label {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height, or 112% */
+
+    display: flex;
+    align-items: center;
+
+    letter-spacing: 0.0025em;
+    /* Text/Primary */
+    color: $paxi-text-primary;
+  }
+
+  // input-group
+  &-input-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Checkbox
+  &-checkbox {
+    input[type=checkbox] {
+      appearance: none;
+      width: 26.67px;
+      height: 26.67px;
+      background-color: $paxi-tertiary-grey;
+      border-radius: 5.33333px;
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
+
+      &:checked {
+        background-color: $paxi-primary-orange;
+      }
+
+      &::before {
+        position: absolute;
+        bottom: 6px;
+        left: calc(50% - 6px);
+        content: '\2713';
+        font-size: 18px;
+        line-height: 15px;
+        color: $color-white;
+        transform: scale(0);
+        transition: 0.3s all ease-in-out;
+      }
+
+      &:checked::before {
+        transform: scale(1);
+      }
+    }
+
+    label {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 5px;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: -0.02em;
+      color: #64748B;
+    }
+  }
+
+  // Radio button
+  &-radio {
+    input[type=radio] {
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border: 2px solid $paxi-primary-orange;
+      border-radius: 50%;
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      cursor: pointer;
+
+      &:checked {
+        background-color: $paxi-primary-orange;
+      }
+
+      &::before {
+        position: absolute;
+        bottom: 1px;
+        left: calc(50% - 6px);
+        content: '\2713';
+        font-size: 18px;
+        line-height: 15px;
+        color: $color-white;
+        transform: scale(0);
+        transition: 0.3s all ease-in-out;
+      }
+
+      &:checked::before {
+        transform: scale(1);
+      }
+
+      &[disabled] {
+        opacity: .5;
+        cursor: not-allowed;
+      }
+    }
+
+    label {
+      display: inline-block;
+      vertical-align: middle;
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      /* identical to box height */
+      letter-spacing: 0.0025em;
+      /* Paxi Text/Primary */
+      color: $paxi-text-primary;
+    }
+
+  }
+
+  // two button groups
+  &-btn-grp {
+    display: flex;
+    justify-content: space-evenly;
+
+    button {
+      width: 165px;
+    }
+  }
+
+  // Buttons
+  &-btn {
+    // large
+    &-large {
+      display: inline-block;
+      outline: 0;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 0.01em;
+      width: 192px;
+      height: 48px;
+    }
+    // fill the available width
+    &-fill {
+      width: stretch;
+      width: -webkit-fill-available;
+      width: -moz-fill-available;
+      margin-inline: 16px;
+    }
+    // orange color
+    &-primary {
+      border: 1px solid $paxi-primary-orange;
+      color: $color-white;
+      background-color: $paxi-primary-orange;
+
+      &:hover {
+        background-color: $paxi-primary-orange-hover;
+        border-color: $paxi-primary-orange-hover;
+      }
+
+      &:focus {
+        background-color: $paxi-primary-orange-focused;
+        border-color: $paxi-primary-orange-focused;
+      }
+
+      &:disabled {
+        background-color: $paxi-tertiary-grey;
+        border-color: $paxi-tertiary-grey;
+      }
+    }
+    // orange outline
+    &-primary-outline {
+      border: 1px solid $paxi-primary-orange;
+      color: $paxi-primary-orange;
+      background-color: transparent;
+
+      &:hover {
+        background: #FFEEE3;
+        border-color: $paxi-primary-orange-hover;
+        /* Drop-Shadow/SM-Shadow */
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      &:focus {
+        background: #FFEEE3;
+        border-color: $paxi-primary-orange-focused;
+        /* Drop-Shadow/SM-Shadow */
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      &:disabled {
+        background-color: $paxi-primary-orange-outline-bg;
+        border-color: $paxi-tertiary-grey;
+        color: $paxi-tertiary-grey;
+      }
+    }
+    // Navy-blue color
+    &-secondary {
+      border: 1px solid $paxi-primary-navy-blue;
+      color: $color-white;
+      background-color: $paxi-primary-navy-blue;
+
+      &:hover {
+        background-color: $paxi-primary-navy-blue-hover;
+        border-color: $paxi-primary-navy-blue-hover;
+      }
+
+      &:focus {
+        background-color: $paxi-primary-navy-blue-focused;
+        border-color: $paxi-primary-navy-blue-focused;
+      }
+
+      &:disabled {
+        background-color: $paxi-tertiary-grey;
+        border-color: $paxi-tertiary-grey;
+      }
+    }
+    &-middle{
+      display: inline-block;
+      outline: 0;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 0.01em;
+      width: 164px;
+      height: 48px;
+      border: 1px solid $color-white;
+      background: $color-white;
+      color: $paxi-text-tertiary;
+    }
+  }
+}
+
+/* ============================ Paxi Errors ============================ */
+.error {
+  // error-text
+  &-text {
+    display: block;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.004em;
+    color: $color-error !important;
+    animation: fadeIn .5s;
+    transition: 0.3s all ease-in-out;
+  }
+}
+
+/* ============================ Animations ============================ */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* ============================ Snackbar styles ============================ */
+.navyblue-snackbar {
+  --mdc-snackbar-container-color: #00455C;
+  --mat-mdc-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+}
+
+.error-snackbar {
+  --mdc-snackbar-container-color: #CB0E0F;
+  --mat-mdc-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+}
+
+.warning-snackbar {
+  --mdc-snackbar-container-color: #f0ad4e;
+  --mat-mdc-snack-bar-button-color: #000000;
+  --mdc-snackbar-supporting-text-color: #000000;
+}
+
+// .mat-mdc-snack-bar-container {
+//   margin-bottom: 6rem!important;
+// }
+.mb2-snackbar {
+  margin-bottom: 6rem !important;
+  margin-inline: 15px !important;
+}
+
+/* =========================== Style to hide recaptcha badge popups on the screen ============================ */
+.grecaptcha-badge { visibility: hidden; }
+
+// Active class for nav
+.active{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+
+
+
+
+/* ============================ Mat-Input Custom Styles ============================ */
+
+// Change Mat-Input Background Color
+.mat-mdc-text-field-wrapper {
+  background-color: $color-white;
+}
+
+// change Left Side shape radius
+.mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading {
+  width: max(16px, var(--mdc-shape-small, 34px)) !important;
+}
+
+// change Left Side border radius
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading {
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+}
+
+// change Right Side border radius
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+// Change Mat-Input Value Color
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: $paxi-text-secondary;
+}
+
+// Change Mat-Input Placeholder Color
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input::placeholder {
+  font-family: 'Rubik' !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 18px !important;
+  letter-spacing: 0.0025em !important;
+  color: $paxi-secondary-hover-state;
+}
+
+// Change caret color on focus (|)
+// .mdc-text-field .mdc-text-field__input {
+//   caret-color: aqua;
+// }
+
+// Change Mat-Input Border Color & width
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+
+  border-color: white;
+}
+
+// Hover To Change Outline Color
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: $paxi-primary-orange;
+}
+
+// Focus To Change Border Color in Mat-Input
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: $paxi-primary-orange-focused;
+  border-width: 2px;
+}
+
+// Error Outline To Change Border Color in Mat-Input
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: $color-error;
+}
+
+// Error Text To Customize in Mat-Input
+.mat-mdc-form-field-error {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: inline-grid !important;
+  align-items: center;
+  letter-spacing: 0.004em;
+  color: $color-error;
+}
+.mat-mdc-form-field-error-wrapper{
+  display: contents !important;
+}
+
+.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full{
+  background:$paxi-primary-orange !important;
+}
+.mdc-list-item--selected .mdc-list-item__primary-text{
+  color: $paxi-darkblue !important;
+}
+
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled:checked+.mdc-radio__background .mdc-radio__outer-circle{
+  border-color: $paxi-primary-orange !important;
+}
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled+.mdc-radio__background .mdc-radio__inner-circle{
+  border-color: $paxi-primary-orange !important;
+}
+.mat-mdc-option .mat-pseudo-checkbox-minimal{
+  display: none !important;
+}
+mat-option .mdc-form-field>label{
+	cursor: pointer;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  /* STYLES GO HERE */
+  main {
+    min-height: 100vh;
+    .desktopsection{
+      min-height: 100vh !important;
+    }
+    section {
+      height: auto;
+      width: 100vw;
+      background: $paxi-bg-grey;
+      .content {
+        padding: 20px 40px 0;
+      }
+    }
+  }
+  .userdetail {
+    .paxi-caption1{
+      color: $paxi-text-light;
+      margin-bottom: 5px !important;
+    }
+    p{
+      margin: 0 !important;
+    }
+  }
+  .successHeader .userdetail{
+    display: none !important;
+  }
+  .paxi-point-dilouge{
+    width: 866px !important;
+  }
+  .closeDiv{
+    text-align: right;
+  }
+  .closeDialogButton{
+    width: 40%;
+  }
+  .mat-mdc-menu-panel.mat-mdc-menu-panel{
+    height: 100px !important;
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+  }
+}
